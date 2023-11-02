@@ -1,6 +1,6 @@
 {
-    "name": "myproject1",
-    "short_name": "myproject1",
+    "name": "shopingpriject",
+    "short_name": "shopingpriject",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
