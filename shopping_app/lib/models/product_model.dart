@@ -3,6 +3,11 @@ class Product {
   final String description;
   double price;
   int count;
+  WatchCategory category;
 
-  Product(this.name, this.description, this.price, this.count);
+  Product(this.name, this.description, this.price, this.count, this.category);
+
+  //need a from json here
 }
+
+enum WatchCategory { metallic, classic, leather }
