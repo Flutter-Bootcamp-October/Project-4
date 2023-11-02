@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wach_store_app/widgets/appbar/app_bar.dart';
 import 'package:wach_store_app/widgets/cart_product_widget.dart';
 import 'package:wach_store_app/widgets/data_details_section.dart';
 
@@ -11,24 +12,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () {},
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: const Text(
-          'My Order',
-          style: TextStyle(color: Colors.black),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.close, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      appBar: appbar(context, true, Icons.close, 'My Order'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -73,7 +57,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                 width: 300,
                 height: 40,
                 decoration: BoxDecoration(
-                    color: Colors.amber[300],
+                    color: Color(0xfffbcf7a),
                     borderRadius: BorderRadius.circular(16)),
                 child: Center(
                     child: Text(

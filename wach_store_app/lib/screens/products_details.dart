@@ -1,28 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:wach_store_app/widgets/appbar/app_bar.dart';
 import 'package:wach_store_app/widgets/row_circle_button_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () {},
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: const Text(
-          'Product Name',
-          style: TextStyle(color: Colors.black),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.shopping_bag_outlined, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      appBar: appbar(context,true,Icons.shopping_bag_outlined,'Prodect Name'),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16),
