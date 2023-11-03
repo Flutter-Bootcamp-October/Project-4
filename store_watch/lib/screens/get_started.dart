@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_watch/screens/signin_up.dart';
 import 'package:store_watch/widgets/circle.dart';
 import 'package:store_watch/widgets/praimery_button.dart';
 
@@ -50,7 +51,16 @@ class GetStarted extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height - 390,
                     ),
-                    const PraimeryButton(buttonTitle: "Get Started"),
+                    PraimeryButton(
+                        buttonTitle: "Get Started",
+                        btnBackgroundColor: Color(0xfffcc873),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignInUp()),
+                          );
+                        }),
                   ],
                 ),
               ),
