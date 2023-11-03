@@ -10,7 +10,7 @@ class ButtonCustom extends StatelessWidget {
   });
   final Color buttonColor;
   final Widget buttonChild;
-  final Function onPressed;
+  final Function() onPressed;
   final double radius;
 
   @override
@@ -23,7 +23,7 @@ class ButtonCustom extends StatelessWidget {
           child: ElevatedButton(
               style: ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(buttonColor)),
-              onPressed: onPressed(),
+              onPressed: onPressed,
               child: buttonChild)),
     );
   }

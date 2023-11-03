@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping_app/extentions/navigation_extentions.dart';
 
 class RichTextCustom extends StatelessWidget {
   const RichTextCustom({
@@ -24,7 +25,7 @@ class RichTextCustom extends StatelessWidget {
               style: const TextStyle(color: Color(0xff1e3867)),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  //navigation for screen
+                  context.removeUnitl(screen);
                 })
         ],
       ),

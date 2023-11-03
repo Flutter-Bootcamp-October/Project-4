@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/consts/colors.dart';
 import 'package:shopping_app/consts/global_consts.dart';
+import 'package:shopping_app/extentions/navigation_extentions.dart';
+import 'package:shopping_app/screens/signup_screen.dart';
 import 'package:shopping_app/widgets/button_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -43,7 +45,9 @@ class WelcomeScreen extends StatelessWidget {
                       "Get Started",
                       style: TextStyle(color: Colors.black),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      context.removeUnitl(const SignUpScreen());
+                    },
                     radius: 25,
                   ),
                 ],
