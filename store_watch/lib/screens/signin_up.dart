@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_watch/screens/text_filde.dart';
+import 'package:store_watch/widgets/text_filde.dart';
 import 'package:store_watch/widgets/image_button.dart';
 import 'package:store_watch/widgets/praimery_button.dart';
 
