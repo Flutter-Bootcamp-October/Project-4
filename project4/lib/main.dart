@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: NavBar(),
     );
@@ -32,21 +32,21 @@ class NavBar extends StatelessWidget {
     return FloatingNavBar(
       borderRadius: 20,
       resizeToAvoidBottomInset: false,
-      color: Color(0xffFBCC7F),
-      selectedIconColor: Color(0xff233B67),
+      color: const Color(0xffFBCC7F),
+      selectedIconColor: const Color(0xff233B67),
       unselectedIconColor: Colors.black,
       items: [
         FloatingNavBarItem(
-            iconData: Icons.home_outlined, page: HomeScreen(), title: ''),
+            iconData: Icons.home_outlined, page: const HomeScreen(), title: ''),
         FloatingNavBarItem(
-            iconData: Icons.search, page: SearchScreen(), title: ''),
+            iconData: Icons.search, page: const SearchScreen(), title: ''),
         FloatingNavBarItem(
             iconData: Icons.shopping_bag_outlined,
-            page: CartScreen(),
+            page: const CartScreen(),
             title: ''),
         FloatingNavBarItem(
             iconData: Icons.person_outline_outlined,
-            page: ProfileScreen(),
+            page: const ProfileScreen(),
             title: ''),
       ],
       horizontalPadding: 15.0,
