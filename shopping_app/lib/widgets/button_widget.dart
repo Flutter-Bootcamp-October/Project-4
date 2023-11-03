@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ButtonWidget extends StatelessWidget {
-  const ButtonWidget({
+class ButtonCustom extends StatelessWidget {
+  const ButtonCustom({
     super.key,
     required this.buttonColor,
     required this.buttonChild,
@@ -24,10 +24,7 @@ class ButtonWidget extends StatelessWidget {
               style: ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(buttonColor)),
               onPressed: onPressed(),
-              child: const Text(
-                "Get Started",
-                style: TextStyle(color: Colors.black),
-              ))),
+              child: buttonChild)),
     );
   }
 }

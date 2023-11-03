@@ -37,7 +37,7 @@ class WelcomeScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                   const SizedBox(height: 495),
-                  ButtonWidget(
+                  ButtonCustom(
                     buttonColor: globalButtonColor,
                     buttonChild: const Text(
                       "Get Started",
