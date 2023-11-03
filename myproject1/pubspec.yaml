@@ -20,3 +20,5 @@ flutter:
   assets:
     
     - lib\assets\imges\img10.png
+    - lib\assets\imges\img5.png
+    - lib\assets\imges\img4.png

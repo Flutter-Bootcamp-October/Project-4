@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopingpriject/screens/home_screen.dart';
-import 'package:shopingpriject/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MainApp());

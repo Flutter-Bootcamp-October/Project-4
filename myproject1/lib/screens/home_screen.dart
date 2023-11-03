@@ -1,16 +1,36 @@
+
 import 'package:flutter/material.dart';
+import 'package:shopingpriject/Home/proudcts_gridview.dart';
+import 'package:shopingpriject/data/global.dart';
+import 'package:shopingpriject/data/proudct_data.dart';
+import 'package:shopingpriject/models/product_model.dart';
+import 'package:shopingpriject/wedgets/filter_wedget.dart';
+import 'package:shopingpriject/wedgets/tap_bar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+bool selcted=false;
+  @override
+  void initState() {
+    listProucts = [];
+    for (var element in proudctData) {
+      listProucts.add(Product.fromJson(element));
+    }
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(children: [
+    return  Scaffold(body: Column(children: [
       SizedBox(height: 50,),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -39,17 +59,51 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Text("Choose Your Top Brands",style: TextStyle(fontSize: 23,fontWeight: FontWeight.bold),),
     )
    ],),
+    SizedBox(width: 380,height: 50,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        
+        children: [
+         InkWell(
+        onTap: () {
+         selcted=true;
+         setState(() {
+            if(selcted==true){
+          color=Colors.black;
+         }
+         });
+        
+        },
+        child: TapBar(text: 'Treding', color: Color(0xfffdc871), textcolor: Colors.black,)),
+        SizedBox(width: 5,),
+        TapBar(text: "Poupular",color: Color(0xffffffff),textcolor: Color(0xffbfbfbf),),
+                SizedBox(width: 5,),
+
+              TapBar(text: "New",color: Color(0xffffffff),textcolor: Color(0xffbfbfbf),),
+                      SizedBox(width: 5,),
+
+         TapBar(text: "Best Collection",color: Color(0xffffffff),textcolor: Color(0xffbfbfbf),),
+            SizedBox(width: 5,),
+
+         TapBar(text: "text",color: Color(0xffffffff),textcolor: Color(0xffbfbfbf),)
+    
+        
+       ],),
+    ),
+   
+  
+  
    Padding(
      padding: const EdgeInsets.all(8.0),
      child: Row(children: [
-        Container(width: 90,height: 50,decoration: BoxDecoration(
-          color: Color(0xfffcc77b),borderRadius: BorderRadiusDirectional.circular(20)),
-          child: Center(child: Text("Trending")),)
+      
      ],),
-   )
-    
+   ),
+                    ProductsGridView()
+
     ],
     ),
     );
   }
+
 }
