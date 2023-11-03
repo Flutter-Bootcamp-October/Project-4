@@ -3,9 +3,9 @@ import 'package:wach_store_app/dataset/wach_dataset.dart';
 import 'package:wach_store_app/global/global.dart';
 import 'package:wach_store_app/models/wach_model.dart';
 import 'package:wach_store_app/widgets/appbar/app_bar.dart';
-import 'package:wach_store_app/widgets/cart_product_widget.dart';
+import 'package:wach_store_app/widgets/cart_widgets/cart_product_widget.dart';
 import 'package:wach_store_app/widgets/cart_widgets/cart_scroll.dart';
-import 'package:wach_store_app/widgets/data_details_section.dart';
+import 'package:wach_store_app/widgets/cart_widgets/data_details_section.dart';
 
 class MyOrderScreen extends StatefulWidget {
   @override

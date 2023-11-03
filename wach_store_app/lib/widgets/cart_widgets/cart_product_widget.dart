@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wach_store_app/models/wach_model.dart';
-import 'package:wach_store_app/widgets/column_circle_button_widget.dart';
+import 'package:wach_store_app/widgets/cart_widgets/column_circle_button_widget.dart';
 
 class CartProdectWidget extends StatefulWidget {
   const CartProdectWidget({super.key, required this.wach});

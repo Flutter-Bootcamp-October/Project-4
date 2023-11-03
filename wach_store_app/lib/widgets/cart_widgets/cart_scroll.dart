@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wach_store_app/global/global.dart';
-import 'package:wach_store_app/widgets/cart_product_widget.dart';
+import 'package:wach_store_app/widgets/cart_widgets/cart_product_widget.dart';
 
 class CartScroll extends StatelessWidget {
   const CartScroll({

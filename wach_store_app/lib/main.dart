@@ -14,6 +14,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyOrderScreen());
+    return MaterialApp(
+      home: MyOrderScreen(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
