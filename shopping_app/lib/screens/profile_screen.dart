@@ -50,6 +50,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               TextFieldCustom(
+                isPassword: true,
                 hint: 'Enter Password',
                 labelText: const Text("Password"),
                 icon: const Icon(Icons.remove_red_eye_outlined),

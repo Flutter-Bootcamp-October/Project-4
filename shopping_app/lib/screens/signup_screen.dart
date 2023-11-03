@@ -47,12 +47,13 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 25),
                 TextFieldCustom(
-                  hint: 'Enter Username or Email',
+                  hint: 'Enter Name Here',
                   labelText: const Text("Full Name"),
                   icon: const Icon(Icons.person),
                 ),
                 const SizedBox(height: 25),
                 TextFieldCustom(
+                  isPassword: true,
                   hint: 'Enter Password',
                   labelText: const Text("Password"),
                   icon: const Icon(Icons.remove_red_eye_outlined),
