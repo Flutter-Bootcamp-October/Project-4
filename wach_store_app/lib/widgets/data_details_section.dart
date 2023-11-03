@@ -19,15 +19,16 @@ class DataDetailsSection extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-              fontSize: isGrandtotal ? 24 : 18,
-              fontWeight: isGrandtotal ? FontWeight.w900 : FontWeight.w500,
+              fontSize: isGrandtotal ? 20 : 16,
+              fontWeight: isGrandtotal ? FontWeight.w800 : FontWeight.w500,
               color: textColor ? Colors.black : Colors.green[700]),
         ),
         Spacer(),
         Text(price,
             style: TextStyle(
-              fontSize: isGrandtotal ? 24 : 16,
-              fontWeight: isGrandtotal ? FontWeight.w900 : FontWeight.w500,
+              color: textColor ? Colors.black : Colors.green[700],
+              fontSize: isGrandtotal ? 20 : 16,
+              fontWeight: isGrandtotal ? FontWeight.w800 : FontWeight.w500,
             ))
       ],
     );
