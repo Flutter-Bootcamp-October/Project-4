@@ -28,7 +28,7 @@ class TextFieldCustom extends StatelessWidget {
               borderSide: const BorderSide(color: Color(0xffdbd9d9)),
               borderRadius: BorderRadius.circular(13)),
           label: labelText,
-          suffixIcon: icon,
+          suffixIcon: icon ?? Container(),
           hintStyle: const TextStyle(color: Color(0xffdbd9d9)),
           hintText: hint,
           filled: true,
