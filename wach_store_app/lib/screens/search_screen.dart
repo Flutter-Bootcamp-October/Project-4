@@ -4,8 +4,7 @@ import 'package:wach_store_app/global/global.dart';
 import 'package:wach_store_app/models/wach_model.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key? key, required this.wach}) : super(key: key);
-  final WachProduct wach;
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -14,6 +13,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController editingController = TextEditingController();
   List<WachProduct> filteredWachList = [];
+  bool isTextFieldFocused = false;
 
   void searchWach(String query) {
     filteredWachList = WachProductList.where((wach) {
@@ -42,7 +42,12 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Column(
             children: [
               TextField(
-                onChanged: searchWach,
+                onChanged: (query) {
+                  setState(() {
+                    isTextFieldFocused = query.isNotEmpty;
+                  });
+                  searchWach(query);
+                },
                 controller: editingController,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(
@@ -57,6 +62,9 @@ class _SearchScreenState extends State<SearchScreen> {
                     onPressed: () {
                       editingController.clear();
                       searchWach('');
+                      setState(() {
+                        isTextFieldFocused = false;
+                      });
                     },
                   ),
                   labelStyle: const TextStyle(
@@ -76,18 +84,19 @@ class _SearchScreenState extends State<SearchScreen> {
                   fillColor: Colors.white,
                 ),
               ),
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: filteredWachList.length,
-                  itemBuilder: (context, index) {
-                    final wach = filteredWachList[index];
-                    return ListTile(
-                      title: Text(wach.name),
-                    );
-                  },
+              if (isTextFieldFocused)
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: filteredWachList.length,
+                    itemBuilder: (context, index) {
+                      final wach = filteredWachList[index];
+                      return ListTile(
+                        title: Text(wach.name),
+                      );
+                    },
+                  ),
                 ),
-              ),
             ],
           ),
         ),

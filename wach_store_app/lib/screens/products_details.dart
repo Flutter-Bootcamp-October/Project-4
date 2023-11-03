@@ -10,8 +10,8 @@ class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          appbar(context, true, Icons.shopping_bag_outlined, wach.name),
+      extendBody: true,
+      appBar: appbar(context, true, Icons.shopping_bag_outlined, wach.name),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -25,7 +25,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
               const SizedBox(height: 16),
-               Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
@@ -40,7 +40,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                       Text(
+                      Text(
                         '\$${wach.price}',
                         style: const TextStyle(
                           fontSize: 20,
@@ -54,7 +54,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-               Text(
+              Text(
                 wach.description,
                 style: const TextStyle(
                   fontSize: 16.0,
