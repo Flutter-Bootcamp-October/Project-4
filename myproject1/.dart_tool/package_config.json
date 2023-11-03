@@ -50,10 +50,22 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "flutter_snake_navigationbar",
+      "rootUri": "file:///C:/Users/senshi/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_snake_navigationbar-0.6.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/dev/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "google_nav_bar",
+      "rootUri": "file:///C:/Users/senshi/AppData/Local/Pub/Cache/hosted/pub.dev/google_nav_bar-5.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "lints",
@@ -146,7 +158,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-11-03T21:36:12.269263Z",
+  "generated": "2023-11-03T22:08:42.087433Z",
   "generator": "pub",
   "generatorVersion": "3.1.4"
 }

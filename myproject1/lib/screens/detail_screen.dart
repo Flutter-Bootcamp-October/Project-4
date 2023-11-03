@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shopingpriject/models/product_model.dart';
 
 class DetilScreen extends StatefulWidget {
-  const DetilScreen({super.key});
+  const DetilScreen({super.key, required Product product});
 
   @override
   State<DetilScreen> createState() => _DetilScreenState();
