@@ -20,3 +20,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets\watch1.png
+    - assets\watch2.png
+    - assets\watch3.png
+    - assets\watch4.png

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/data/data.dart';
 import 'package:shopping_app/global/colors.dart';
+import 'package:shopping_app/global/global.dart';
+import 'package:shopping_app/models/product_model.dart';
+import 'package:shopping_app/screens/filter_screen.dart';
 import 'package:shopping_app/widgets/show_watch.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,6 +11,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    productList.clear();
+    for (Map product in watches) {
+      productList.add(Product.fromJson(product));
+    }
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -25,23 +33,37 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           centerTitle: true,
-          actions: const [
-            Icon(
-              Icons.filter_list_rounded,
-              color: Colors.black,
-            ),
-            SizedBox(width: 8)
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FilterScreen()));
+                },
+                icon: const Icon(
+                  Icons.filter_list_rounded,
+                  color: Colors.black,
+                )),
+            const SizedBox(width: 8)
           ],
         ),
-        body: ListView(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Hello",
-              style: TextStyle(
-                  color: appBlue, fontSize: 24, fontWeight: FontWeight.bold),
+            const Padding(
+              padding: EdgeInsets.only(top: 16, left: 16),
+              child: Text(
+                "Hello",
+                style: TextStyle(
+                    color: appBlue, fontSize: 24, fontWeight: FontWeight.bold),
+              ),
             ),
-            const Text("Chose your top Brands",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            const Padding(
+              padding: EdgeInsets.only(left: 16, bottom: 32),
+              child: Text("Chose your top Brands",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ),
             TabBar(
               padding: const EdgeInsets.all(8),
               labelPadding:
@@ -58,13 +80,33 @@ class HomeScreen extends StatelessWidget {
                 Text("BestCollection"),
               ],
             ),
-            const ShowWatch(),
+            Expanded(
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: productList.length,
+                  shrinkWrap: true,
+                  itemBuilder: (_, index) {
+                    return ShowWatch(product: productList[index]);
+                  }),
+            ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("Top deals"), Text("View more")],
+                children: [
+                  Text("Top deals",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text(
+                    "View All",
+                    style: TextStyle(color: appBlue),
+                  ),
+                ],
               ),
+            ),
+            const SizedBox(
+              width: 123,
+              height: 150,
             )
           ],
         ),
