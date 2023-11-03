@@ -10,6 +10,9 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+
     return Stack(children: [
       Image.asset(
         'lib/assets/images/signin.png',
@@ -41,12 +44,14 @@ class SignInScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 49, bottom: 29),
                 child: TextFieldCustom(
+                  controller: emailController,
                   hint: 'Enter Username or Email',
                   labelText: const Text("Username or Email"),
                   icon: const Icon(Icons.email_outlined),
                 ),
               ),
               TextFieldCustom(
+                controller: passwordController,
                 isPassword: true,
                 hint: 'Enter Password',
                 labelText: const Text("Password"),

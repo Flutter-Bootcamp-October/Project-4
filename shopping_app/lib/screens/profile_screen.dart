@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:shopping_app/consts/colors.dart';
+import 'package:shopping_app/global/global.dart';
 import 'package:shopping_app/widgets/button_widget.dart';
 import 'package:shopping_app/widgets/textfield_widget.dart';
 
@@ -9,6 +10,15 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController =
+        TextEditingController(text: currentUser.email);
+    TextEditingController passwordController =
+        TextEditingController(text: currentUser.password);
+    TextEditingController nameController =
+        TextEditingController(text: currentUser.fullName);
+    TextEditingController mobileController =
+        TextEditingController(text: currentUser.mobileNumber);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -31,25 +41,29 @@ class ProfileScreen extends StatelessWidget {
                   badgeStyle:
                       const badges.BadgeStyle(badgeColor: globalButtonColor),
                   badgeContent: const Icon(Icons.camera_alt_outlined),
-                  child: Image.asset('lib/assets/images/profile.png',
+                  child: Image.asset(currentUser.imagePath,
                       width: 90, height: 90)),
               const SizedBox(height: 40),
               TextFieldCustom(
+                controller: nameController,
                 hint: 'Enter Full Name',
                 labelText: const Text("Name"),
               ),
               const SizedBox(height: 30),
               TextFieldCustom(
+                controller: mobileController,
                 hint: 'Enter mobile number',
                 labelText: const Text("Mobile Number"),
               ),
               const SizedBox(height: 30),
               TextFieldCustom(
+                controller: emailController,
                 hint: 'Enter Email Address',
                 labelText: const Text("Email Address"),
               ),
               const SizedBox(height: 30),
               TextFieldCustom(
+                controller: passwordController,
                 isPassword: true,
                 hint: 'Enter Password',
                 labelText: const Text("Password"),
@@ -62,7 +76,19 @@ class ProfileScreen extends StatelessWidget {
                   "Update",
                   style: TextStyle(color: Colors.black),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  if (nameController.text.isNotEmpty &&
+                      passwordController.text.isNotEmpty &&
+                      emailController.text.isNotEmpty) {
+                    currentUser.email = emailController.text;
+                    currentUser.password = passwordController.text;
+                    currentUser.fullName = nameController.text;
+                    currentUser.mobileNumber = mobileController.text;
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Please fill out required field")));
+                  }
+                },
                 radius: 10,
               ),
             ],

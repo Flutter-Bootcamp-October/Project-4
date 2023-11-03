@@ -7,9 +7,11 @@ class TextFieldCustom extends StatefulWidget {
       required this.hint,
       required this.labelText,
       this.icon,
-      this.isPassword = false});
+      this.isPassword = false,
+      required this.controller});
   final String hint;
   final Text labelText;
+  final TextEditingController controller;
   Icon? icon;
   bool isPassword;
 
@@ -24,6 +26,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
       width: MediaQuery.of(context).size.width - 40,
       height: 60,
       child: TextField(
+        controller: widget.controller,
         obscureText: widget.isPassword,
         decoration: InputDecoration(
           labelStyle:
