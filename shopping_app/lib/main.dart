@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/screens/profile_screen.dart';
 import 'package:shopping_app/screens/welcome_screen.dart';
 
 void main() {

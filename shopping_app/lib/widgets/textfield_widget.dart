@@ -38,16 +38,11 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
               borderSide: const BorderSide(color: Color(0xffdbd9d9)),
               borderRadius: BorderRadius.circular(13)),
           label: widget.labelText,
-          //trying to make they eye an icon button that switch isPassword state
-          suffixIcon: widget.icon == const Icon(Icons.remove_red_eye_outlined)
-              ? IconButton(
-                  onPressed: () {
-                    widget.isPassword = !widget.isPassword;
-                    print("got here");
-                    setState(() {});
-                  },
-                  icon: widget.icon!)
-              : widget.icon ?? Container(),
+          suffixIcon: widget.icon ??
+              const Icon(
+                Icons.circle,
+                color: Colors.white,
+              ), //trying to make they eye an icon button that switch isPassword state
           hintStyle: const TextStyle(color: Color(0xffdbd9d9)),
           hintText: widget.hint,
           filled: true,
