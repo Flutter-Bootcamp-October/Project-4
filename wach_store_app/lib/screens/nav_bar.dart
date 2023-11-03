@@ -34,6 +34,10 @@ class _WachNavigationBarState extends State<WachNavigationBar> {
         unselectedItemColor: Colors.black,
         onTap: (int i) {
           setState(() {
+            if (i == 2) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MyOrderScreen()));
+            }
             index = i;
             _selectedTab = _SelectedTab.values[i];
           });
