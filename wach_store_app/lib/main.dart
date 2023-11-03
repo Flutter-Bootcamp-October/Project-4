@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wach_store_app/models/wach_model.dart';
 import 'package:wach_store_app/screens/cart_screen.dart';
 import 'package:wach_store_app/screens/products_details.dart';
 import 'package:wach_store_app/screens/profile_screen.dart';
@@ -13,6 +14,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: SearchScreen());
+    return MaterialApp(home: ProfileScreen());
   }
 }
