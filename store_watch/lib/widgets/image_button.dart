@@ -23,7 +23,7 @@ class ImageButton extends StatelessWidget {
             height: 32,
           ),
           const Text(
-            "Sign In With Google",
+            "Sign in with Google",
             style: TextStyle(fontWeight: FontWeight.w600),
           )
         ]),

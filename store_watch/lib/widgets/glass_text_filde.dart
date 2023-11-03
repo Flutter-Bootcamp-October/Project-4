@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:glass/glass.dart';
 
-class UserTextFiled extends StatelessWidget {
-  const UserTextFiled(
+class GlassTextFiled extends StatelessWidget {
+  const GlassTextFiled(
       {super.key,
       required this.hint,
       required this.labelText,
@@ -28,7 +28,7 @@ class UserTextFiled extends StatelessWidget {
           labelText: labelText,
           labelStyle: const TextStyle(fontSize: 18),
           hintText: hint,
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: TextStyle(color: Colors.grey.withOpacity(0.4)),
           suffixIcon: Padding(
             padding: EdgeInsets.only(right: 22),
             child: Icon(

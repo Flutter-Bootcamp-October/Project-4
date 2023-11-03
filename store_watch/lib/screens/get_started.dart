@@ -53,7 +53,6 @@ class GetStarted extends StatelessWidget {
                     ),
                     PraimeryButton(
                         buttonTitle: "Get Started",
-                        btnBackgroundColor: Color(0xfffcc873),
                         onPressed: () {
                           Navigator.push(
                             context,

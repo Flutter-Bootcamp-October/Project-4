@@ -20,6 +20,7 @@ dev_dependencies:
 
 flutter:
   assets:
+   - assets/profile_image.jpeg
    - assets/watch_login.png
    - assets/gmail_icon.png
    - assets/background_watch.jpeg

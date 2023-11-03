@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class PraimeryButton extends StatelessWidget {
-  const PraimeryButton(
-      {super.key,
-      required this.buttonTitle,
-      required this.onPressed,
-      required this.btnBackgroundColor});
+  const PraimeryButton({
+    super.key,
+    required this.buttonTitle,
+    required this.onPressed,
+  });
   final String buttonTitle;
   final Function() onPressed;
-  final Color btnBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class PraimeryButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: btnBackgroundColor,
+          backgroundColor: Color(0xfffcc873),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -27,7 +26,7 @@ class PraimeryButton extends StatelessWidget {
         child: Text(buttonTitle,
             style: const TextStyle(
               color: Colors.black,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w400,
             )),
       ),
     );

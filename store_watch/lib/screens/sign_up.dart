@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:store_watch/widgets/button_text.dart';
 import 'package:store_watch/widgets/header.dart';
-import 'package:store_watch/widgets/glass_text_filde.dart';
-import 'package:store_watch/widgets/image_button.dart';
 import 'package:store_watch/widgets/praimery_button.dart';
+import 'package:store_watch/widgets/glass_text_filde.dart';
 
-class SignInUp extends StatelessWidget {
-  const SignInUp({super.key});
+class SignUp extends StatelessWidget {
+  const SignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,48 +41,39 @@ class SignInUp extends StatelessWidget {
                     height: 28,
                   ),
                   const Header(
-                      title: "Let's Sign in",
-                      subTitle: "Fill the details below to continue."),
-                  const SizedBox(height: 8),
+                      title: "Let's Sign up",
+                      subTitle: "Let's sign up to get rewards."),
+                  const SizedBox(height: 4),
                   const GlassTextFiled(
                     hint: "Enter Username or Email",
                     labelText: "Username or Email",
                     icon: Icons.email_outlined,
                     isPassword: false,
                   ),
+                  const SizedBox(height: 4),
+                  const GlassTextFiled(
+                    hint: "Enter Name Here",
+                    labelText: "Full Name",
+                    icon: Icons.person_outlined,
+                    isPassword: false,
+                  ),
+                  const SizedBox(height: 4),
                   const GlassTextFiled(
                     hint: "Enter Password",
                     labelText: "Password",
                     icon: Icons.lock_outline,
                     isPassword: true,
                   ),
-                  const Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "Forgot Password?",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff364c75)),
-                    ),
-                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 12, bottom: 14),
                     child: PraimeryButton(
-                      buttonTitle: "Sign in",
+                      buttonTitle: "Sign Up",
                       onPressed: () {},
                     ),
                   ),
-                  const Align(
-                    alignment: Alignment.center,
-                    child: Text("OR",
-                        style: TextStyle(fontWeight: FontWeight.w600)),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 12, bottom: 14),
-                    child: ImageButton(),
-                  ),
+                  const SizedBox(height: 32),
                   const ButtonText(
-                      title: "New To ADS Watch", titleButton: " Sign up"),
+                      title: "Joined us before?", titleButton: " Sign in"),
                 ],
               )
             ],
