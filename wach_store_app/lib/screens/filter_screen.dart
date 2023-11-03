@@ -1,0 +1,125 @@
+import 'package:flutter/material.dart';
+import 'package:wach_store_app/widgets/appbar/app_bar.dart';
+import 'package:wach_store_app/widgets/filter_widget/category_widget.dart';
+
+class FilterScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: appbar(context, true, Icons.close, 'Filter'),
+        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: Text(
+              'Select Category',
+              style: TextStyle(
+                color: Color(0xff163368),
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CategoryWidget(
+                      text: 'All Waches',
+                    ),
+                    CategoryWidget(
+                      text: 'Metallic',
+                    ),
+                    CategoryWidget(
+                      text: 'Leather',
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  CategoryWidget(
+                    text: 'Expensive',
+                  ),
+                  CategoryWidget(
+                    text: 'Classical',
+                  ),
+                ])
+              ],
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: Text(
+              'Sort Watches By',
+              style: TextStyle(
+                color: Color(0xff163368),
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CategoryWidget(
+                      text: 'Price',
+                    ),
+                    CategoryWidget(
+                      text: 'Rating',
+                    ),
+                    CategoryWidget(
+                      text: 'Popularity',
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CategoryWidget(
+                      text: 'Top Selling',
+                    ),
+                    CategoryWidget(
+                      text: 'Deals & Discounts',
+                      isTextlong: true,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(16),
+            child: Text(
+              'Select a Price Range',
+              style: TextStyle(
+                color: const Color(0xff163368),
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: RangeSlider(
+                inactiveColor: Colors.grey,
+                activeColor: const Color(0xfffbcf7a),
+                min: 0,
+                max: 2000,
+                values: const RangeValues(350, 1100),
+                onChanged: (RangeValues values) {},
+              ))
+        ]));
+  }
+}
