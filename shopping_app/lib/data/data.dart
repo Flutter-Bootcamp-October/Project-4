@@ -1,3 +1,5 @@
+import 'package:shopping_app/models/product_model.dart';
+
 List<String> selectCategories = [
   "All Watches",
   "Metallic",
@@ -14,4 +16,45 @@ List<String> sortDataby = [
   "Deals and Discounts"
 ];
 
-List<Map> watches = [{}, {}, {}, {}];// watches data there are like 4
+List<Map> watches = [
+  {
+    'name': 'Apple Watch',
+    'description':
+        'Experience the epitome of smartwatch technology with the Apple Watch, offering a wide range of features and cutting-edge functionality.',
+    'price': 2199.99,
+    'count': 0,
+    'category': WatchCategory.classic,
+    'image': 'assets\\watch1.png',
+    'rating': 1.5
+  },
+  {
+    'name': 'Samsung Galaxy Watch',
+    'description':
+        'levate your style with the Samsung Galaxy Watch, a sleek and stylish timepiece that seamlessly integrates with your daily life, complete with a luxurious leather strap.',
+    'price': 1799.99,
+    'count': 0,
+    'category': WatchCategory.leather,
+    'image': 'assets\\watch2.png',
+    'rating': 5.0
+  },
+  {
+    'name': 'Fitbit Versa',
+    'description':
+        'Achieve your fitness goals with the Fitbit Versa, a dedicated fitness smartwatch that tracks your activities and helps you stay in shape.',
+    'price': 999.99,
+    'count': 0,
+    'category': WatchCategory.metallic,
+    'image': 'assets\\watch3.png',
+    'rating': 3.5
+  },
+  {
+    'name': 'Garmin Fenix',
+    'description':
+        'Embrace the outdoors with confidence, thanks to the Garmin Fenix smartwatch, designed for adventurers and outdoor enthusiasts, complemented by a comfortable leather strap.',
+    'price': 2499.99,
+    'count': 0,
+    'category': WatchCategory.leather,
+    'image': 'assets\\watch4.png',
+    'rating': 4.5
+  },
+];
