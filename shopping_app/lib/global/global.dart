@@ -6,7 +6,7 @@ List<Address> addressesList = []; //think about adding address?
 User currentUser = User(
   email: 'sara@gmail.com',
   fullName: 'Sara A.',
-  imagePath: 'ib/assets/images/profile.png',
+  imagePath: 'lib/assets/images/profile.png',
   mobileNumber: '0555555555',
   password: '1234',
 );

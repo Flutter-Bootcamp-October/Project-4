@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/consts/colors.dart';
+import 'package:shopping_app/extentions/navigation_extentions.dart';
 import 'package:shopping_app/global/global.dart';
 import 'package:shopping_app/models/user_model.dart';
+import 'package:shopping_app/screens/profile_screen.dart';
 import 'package:shopping_app/screens/signin_screen.dart';
 import 'package:shopping_app/widgets/button_widget.dart';
 import 'package:shopping_app/widgets/rich_text_widget.dart';
@@ -81,23 +83,24 @@ class SignUpScreen extends StatelessWidget {
                       currentUser = User(
                           email: emailController.text,
                           fullName: nameController.text,
-                          imagePath: '',
-                          mobileNumber: 'lib/assets/images/empty_profile.png',
+                          imagePath: 'lib/assets/images/empty_profile.png',
+                          mobileNumber: '05656',
                           password: passwordController.text);
                       if (usersList
                           .where((element) =>
-                              element.email == emailController.text)
+                              element.email == emailController.text &&
+                              element.fullName != currentUser.fullName)
                           .isNotEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             content: Text(
-                                "This Email has been used before, try with different email")));
+                                "This email has been used in another account, try with different email")));
                       } else if (usersList.contains(currentUser)) {
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             content: Text(
                                 "Seems like you're already a member. Please sign in instead")));
-                        //navigate?
                       } else {
                         usersList.add(currentUser);
+                        context.pushScreen(const ProfileScreen());
                       }
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

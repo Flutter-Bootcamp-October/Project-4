@@ -29,6 +29,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
         controller: widget.controller,
         obscureText: widget.isPassword,
         decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.always,
           labelStyle:
               const TextStyle(color: Color.fromARGB(255, 119, 119, 119)),
           suffixIconColor: const Color(0xffdbd9d9),
