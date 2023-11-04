@@ -12,6 +12,7 @@ dependencies:
   flutter_snake_navigationbar: ^0.6.1
   google_nav_bar: ^5.0.6
   dot_navigation_bar:
+  badges: ^3.1.2
 
 
 dev_dependencies:
