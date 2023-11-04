@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wach_store_app/models/wach_model.dart';
 import 'package:wach_store_app/widgets/appbar/app_bar.dart';
-import 'package:wach_store_app/widgets/profile_widget/row_circle_button_widget.dart';
+import 'package:wach_store_app/widgets/cart_widgets/row_circle_button_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final WachProduct wach;

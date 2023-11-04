@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ProfileTextField extends StatefulWidget {
-  ProfileTextField({
+class ProfileTextFieldPasswerd extends StatefulWidget {
+  ProfileTextFieldPasswerd({
     super.key,
     required this.lable,
     required this.Controller,
@@ -10,15 +10,27 @@ class ProfileTextField extends StatefulWidget {
   TextEditingController Controller;
 
   @override
-  State<ProfileTextField> createState() => _ProfileTextFieldState();
+  State<ProfileTextFieldPasswerd> createState() =>
+      _ProfileTextFieldPasswerdState();
 }
 
-class _ProfileTextFieldState extends State<ProfileTextField> {
+class _ProfileTextFieldPasswerdState extends State<ProfileTextFieldPasswerd> {
+  bool isObscured = true;
+
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscureText: isObscured,
       controller: widget.Controller,
       decoration: InputDecoration(
+          suffixIcon: IconButton(
+            icon: isObscured
+                ? Icon(Icons.visibility, color: Colors.grey)
+                : Icon(Icons.visibility_off, color: Colors.grey),
+            onPressed: () {
+              isObscured = !isObscured;
+            },
+          ),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           labelText: widget.lable,
           labelStyle: const TextStyle(

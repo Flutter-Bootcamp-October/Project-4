@@ -31,14 +31,14 @@ class _RowCircleButtonState extends State<RowCircleButton> {
           ),
         ),
         const SizedBox(
-          width: 4,
+          width: 8,
         ),
         Text(
           '$amount',
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ),
         const SizedBox(
-          width: 4,
+          width: 8,
         ),
         Container(
           width: 30,

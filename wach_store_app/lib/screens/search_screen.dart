@@ -92,7 +92,15 @@ class _SearchScreenState extends State<SearchScreen> {
                     itemBuilder: (context, index) {
                       final wach = filteredWachList[index];
                       return ListTile(
-                        title: Text(wach.name),
+                        title: Row(
+                          children: [
+                            Icon(Icons.av_timer_outlined),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Text(wach.name),
+                          ],
+                        ),
                       );
                     },
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wach_store_app/widgets/appbar/app_bar.dart';
+import 'package:wach_store_app/widgets/edit_button.dart';
 import 'package:wach_store_app/widgets/filter_widget/category_widget.dart';
 
 class FilterScreen extends StatelessWidget {
@@ -13,14 +14,14 @@ class FilterScreen extends StatelessWidget {
             child: Text(
               'Select Category',
               style: TextStyle(
-                color: Color(0xff163368),
+                color: Colors.black,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -38,7 +39,7 @@ class FilterScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -57,14 +58,14 @@ class FilterScreen extends StatelessWidget {
             child: Text(
               'Sort Watches By',
               style: TextStyle(
-                color: Color(0xff163368),
+                color: Colors.black,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
                 Row(
@@ -81,7 +82,7 @@ class FilterScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -104,7 +105,7 @@ class FilterScreen extends StatelessWidget {
             child: Text(
               'Select a Price Range',
               style: TextStyle(
-                color: const Color(0xff163368),
+                color: Colors.black,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -113,13 +114,18 @@ class FilterScreen extends StatelessWidget {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: RangeSlider(
+                labels: const RangeLabels('\$350', '\$1100'),
                 inactiveColor: Colors.grey,
                 activeColor: const Color(0xfffbcf7a),
                 min: 0,
                 max: 2000,
                 values: const RangeValues(350, 1100),
                 onChanged: (RangeValues values) {},
-              ))
+              )),
+          const Spacer(),
+          Padding(
+              padding: EdgeInsets.all(16),
+              child: EditButton(text: 'Apply', onTap: () {}))
         ]));
   }
 }

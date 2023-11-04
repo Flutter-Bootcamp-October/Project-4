@@ -5,16 +5,18 @@ import 'package:wach_store_app/models/wach_model.dart';
 import 'package:wach_store_app/widgets/appbar/app_bar.dart';
 import 'package:wach_store_app/widgets/cart_widgets/cart_scroll.dart';
 import 'package:wach_store_app/widgets/cart_widgets/data_details_section.dart';
+import 'package:wach_store_app/widgets/edit_button.dart';
 
-class MyOrderScreen extends StatefulWidget {
+class CartScreen extends StatefulWidget {
   @override
-  _MyOrderScreenState createState() => _MyOrderScreenState();
+  _CartScreenState createState() => _CartScreenState();
 }
 
-class _MyOrderScreenState extends State<MyOrderScreen> {
+class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     super.initState();
+    WachProductList = [];
     for (var wach in WachDataSet) {
       WachProductList.add(WachProduct.fromJson(wach));
     }
@@ -26,7 +28,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
       appBar: appbar(context, true, Icons.close, 'My Order'),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: Column(
             children: [
               CartScroll(),
@@ -66,20 +68,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                 isGrandtotal: true,
                 price: '\$10,000.00',
               ),
-              InkWell(
-                child: Container(
-                  width: 300,
-                  height: 40,
-                  decoration: BoxDecoration(
-                      color: Color(0xfffbcf7a),
-                      borderRadius: BorderRadius.circular(16)),
-                  child: Center(
-                      child: Text(
-                    'Checkout',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                  )),
-                ),
-              )
+              EditButton(text: 'Checkout', onTap: () {})
             ],
           ),
         ),
