@@ -25,6 +25,7 @@ class SignInScreen extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       Scaffold(
+        resizeToAvoidBottomInset: true,
         backgroundColor: Colors.transparent,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),

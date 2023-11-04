@@ -113,7 +113,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(25),
-                  child: Image.asset("assets\\ad.jpg")),
+                  child: Image.asset("assets/images/ad.jpg")),
             )
           ],
         ),

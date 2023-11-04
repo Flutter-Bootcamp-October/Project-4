@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/global/colors.dart';
+import 'package:shopping_app/widgets/radio_button.dart';
 
 class Address extends StatelessWidget {
   const Address(
@@ -7,11 +7,13 @@ class Address extends StatelessWidget {
       required this.address,
       required this.addressInfo1,
       required this.addressInfo2,
-      required this.mobileNumber});
+      required this.mobileNumber,
+      required this.isSelected});
   final String address;
   final String addressInfo1;
   final String addressInfo2;
   final String mobileNumber;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +31,7 @@ class Address extends StatelessWidget {
       child: Column(children: [
         const SizedBox(height: 8),
         Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          const Icon(
-            Icons.circle,
-            color: appYellow,
-          ),
+          RadioBotton(isSelected: isSelected),
           Text(address,
               style:
                   const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
