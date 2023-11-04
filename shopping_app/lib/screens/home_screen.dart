@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/consts/colors.dart';
 import 'package:shopping_app/data/data.dart';
-import 'package:shopping_app/global/colors.dart';
 import 'package:shopping_app/global/global.dart';
 import 'package:shopping_app/models/product_model.dart';
 import 'package:shopping_app/screens/filter_screen.dart';

@@ -5,5 +5,10 @@ import 'package:shopping_app/models/user_model.dart';
 List<User> usersList = [];
 List<Product> productList = [];
 List<Address> addressesList = []; //think about adding address?
-User currentUser =
-    User("temp", "email", "fullName", "imagePath", "mobileNumber", "password");
+User currentUser = User(
+  email: 'sara@gmail.com',
+  fullName: 'Sara A.',
+  imagePath: 'lib/assets/images/profile.png',
+  mobileNumber: '0555555555',
+  password: '1234',
+);
