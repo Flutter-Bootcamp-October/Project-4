@@ -3,6 +3,7 @@ import 'package:shopingpriject/data/global.dart';
 import 'package:shopingpriject/widgets/custom_profiletextfield.dart';
 import 'package:shopingpriject/widgets/custom_updatebutton.dart';
 
+<<<<<<< HEAD
 class ProfileScreen extends StatefulWidget {
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -14,6 +15,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       emailController = TextEditingController(text: currentUser.email),
       paswwordController = TextEditingController(text: currentUser.password);*/
 
+=======
+
+class ProfileScreen extends StatelessWidget {
+>>>>>>> af75baf704b8ba4de0f3beff0787746675d94997
   @override
   Widget build(BuildContext context) {
     print("nameprof:${currentUser.name}");
@@ -66,5 +71,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
     );
+
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Column(children: [
+      Center(child: Text("ProfileScreen"))
+    ],),);
+
   }
 }

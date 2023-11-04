@@ -9,6 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_snake_navigationbar: ^0.6.1
+  google_nav_bar: ^5.0.6
+  dot_navigation_bar:
+
 
 dev_dependencies:
   flutter_test:
@@ -20,6 +24,7 @@ flutter:
   assets:
     
     - lib\assets\imges\img10.png
+
     - lib\assets\imges\backgroung_img.jpg
     - lib\assets\imges\img1.png
     - lib\assets\imges\img2.png
@@ -36,3 +41,5 @@ flutter:
         - asset: lib\fonts\Unna-Bold.ttf
           weight: 700
         
+
+
