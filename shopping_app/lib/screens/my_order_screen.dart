@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/screens/checkout.dart';
 import 'package:shopping_app/widgets/my_app_bar.dart';
 import 'package:shopping_app/widgets/show_order.dart';
+import 'package:shopping_app/widgets/total_money.dart';
 
 class MyOrderScreen extends StatelessWidget {
   const MyOrderScreen({super.key});
@@ -18,26 +19,7 @@ class MyOrderScreen extends StatelessWidget {
         child: Column(
           children: [
             ShowOrder(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text("Item total"), Text("data")],
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("Discount"), Text("data")],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text("Delivary free"), Text("Free")],
-            ),
-            Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text("Ground total"), Text("data")],
-            ),
+            TotalMoney(),
           ],
         ),
       ),
