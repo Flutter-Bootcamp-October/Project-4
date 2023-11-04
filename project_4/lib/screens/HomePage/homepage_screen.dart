@@ -37,7 +37,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
           children: [
             Text(
               "Hello",
-              style: TextStyle(fontSize: 28, color: Color(0xff294475), fontFamily: 'DMSerifText'),
+              style: TextStyle(
+                  fontSize: 28,
+                  color: Color(0xff294475),
+                  fontFamily: 'DMSerifText'),
             ),
             Text(
               "Choose Your Top Brands",
@@ -48,7 +51,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
             ),
             CategoryWidget(),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
