@@ -17,10 +17,19 @@ class _CartProdectWidgetState extends State<CartProdectWidget> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            widget.wach.image,
-            width: 100,
-            height: 100,
+          Stack(
+            children: [
+              Image.asset(
+                'lib\\assets\\backgraund.jpg',
+                width: 120,
+                height: 120,
+              ),
+              Image.asset(
+                widget.wach.image,
+                width: 100,
+                height: 100,
+              ),
+            ],
           ),
           const SizedBox(width: 16),
           Expanded(

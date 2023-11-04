@@ -6,7 +6,6 @@ import 'package:wach_store_app/widgets/filter_widget/category_widget.dart';
 class FilterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
         appBar: appbar(context, true, Icons.close, 'Filter', () {}),
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -116,11 +115,10 @@ class FilterScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: RangeSlider(
                 labels: const RangeLabels('\$350', '\$1100'),
-                
                 inactiveColor: Colors.grey,
                 activeColor: const Color(0xfffbcf7a),
                 min: 0,
-                max: 100,
+                max: 2000,
                 divisions: 100,
                 values: const RangeValues(350, 1100),
                 onChanged: (RangeValues values) {},
