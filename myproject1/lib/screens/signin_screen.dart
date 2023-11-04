@@ -1,17 +1,145 @@
 import 'package:flutter/material.dart';
+import 'package:shopingpriject/custom_profiletextfield.dart/custom_button.dart';
+import 'package:shopingpriject/screens/signup_Screen.dart';
+import 'package:shopingpriject/widgets/custom_textfield.dart';
 
-class SigninScreen extends StatefulWidget {
-  const SigninScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  State<SigninScreen> createState() => _SigninScreenState();
+  _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _SigninScreenState extends State<SigninScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(children: [
-      Center(child: Text("SigninScreen"))
-    ],),);
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      resizeToAvoidBottomInset: false,
+      body: Padding(
+        padding: const EdgeInsets.only(
+          top: 50,
+          left: 10,
+        ),
+        child: Stack(
+          alignment: Alignment.centerRight,
+          children: [
+            Positioned(
+              bottom: 490,
+              left: 250,
+              child: Container(
+                child: Image.asset(
+                  "lib/assets/imges/img2.png",
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Image.asset(
+                    "lib/assets/imges/img 11.png",
+                    width: 100,
+                    height: 100,
+                  ),
+                ),
+                Text(
+                  "Let's Sign in",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: "Unna",
+                    color: Colors.blue[900],
+                  ),
+                ),
+                Text(
+                  "Fill the details below to continue.",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: CustomTextField(
+                    label: "Username or Email",
+                    hint: "Enter Username or Email",
+                    icon: Icons.email_outlined,
+                  ),
+                ),
+                SizedBox(height: 20),
+                CustomTextField(
+                  label: "Password",
+                  hint: "Enter password",
+                  icon: Icons.remove_red_eye_outlined,
+                  obscureText: true,
+                ),
+                SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(color: Colors.blue[800]),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20, left: 20),
+                  child: CustomButton(
+                    text: "Sign in",
+                    buttonColor: Colors.amber,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 10),
+                Align(alignment: Alignment.bottomCenter, child: Text("OR")),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: CustomButton(
+                    text: "Sign in with Google",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpScreen(),
+                        ),
+                      );
+                    },
+                    buttonColor: Color.fromARGB(255, 248, 246, 246),
+                  ),
+                ),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("New to ADS Watch?"),
+                    SizedBox(width: 5),
+                    Text(
+                      "Sign in",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue[900],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopingpriject/screens/welcome_screen.dart';
+//import 'package:shopingpriject/screens/filter_screen.dart';
+import 'package:shopingpriject/screens/search_screen.dart';
+//import 'package:shopingpriject/screens/profile_screen.dart';
+
+//import 'package:shopingpriject/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,10 +14,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: WelocmeScreen()
-         
-      
+    return MaterialApp(
+      home: SearchScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

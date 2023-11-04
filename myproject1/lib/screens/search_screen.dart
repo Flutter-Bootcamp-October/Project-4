@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:shopingpriject/widgets/custom_search.dart';
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
-
-  @override
-  State<SearchScreen> createState() => _SearchScreenState();
-}
-
-class _SearchScreenState extends State<SearchScreen> {
+class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(children: [
-      Center(child: Text("serchscreen"))
-    ],),);
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      body: Padding(
+        padding: EdgeInsets.only(top: 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(right: 10, left: 10),
+              child: SearchBar(
+                  leading: Icon(Icons.search),
+                  trailing: <Widget>[Icon(Icons.close)]),
+            ),
+            SizedBox(height: 20),
+            SearchWidget(
+              text: "Eco-Drive Bracelet",
+            ),
+            SearchWidget(
+              text: "Zeitwerk Date",
+            ),
+            SearchWidget(
+              text: "Tourbillion Gold",
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
