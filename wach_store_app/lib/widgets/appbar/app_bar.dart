@@ -4,7 +4,7 @@ IconData? icon;
 String? title;
 final bool visibal = true;
 late final Function() onTap;
-appbar(BuildContext context, visibal, icon, title,onTap) {
+appbar(BuildContext context, visibal, icon, title, onTap) {
   return AppBar(
     elevation: 0,
     leading: IconButton(
@@ -15,7 +15,7 @@ appbar(BuildContext context, visibal, icon, title,onTap) {
     backgroundColor: Colors.white,
     title: Text(
       title!,
-      style: TextStyle(color: Colors.black),
+      style: TextStyle(color: Colors.black, fontFamily: 'Crimson'),
     ),
     actions: [
       Visibility(

@@ -22,7 +22,10 @@ class _ProfileTextFieldState extends State<ProfileTextField> {
           floatingLabelBehavior: FloatingLabelBehavior.always,
           labelText: widget.lable,
           labelStyle: const TextStyle(
-              color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w800),
+              fontFamily: 'Crimson',
+              color: Colors.grey,
+              fontSize: 16,
+              fontWeight: FontWeight.w800),
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey),
               borderRadius: BorderRadius.circular(10)),

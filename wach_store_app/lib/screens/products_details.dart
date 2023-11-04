@@ -38,6 +38,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         wach.name,
                         style: const TextStyle(
                           color: Color(0xff163368),
+                          fontFamily: 'Crimson',
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
@@ -46,6 +47,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       Text(
                         '\$${wach.price}',
                         style: const TextStyle(
+                          fontFamily: 'Crimson',
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -60,6 +62,7 @@ class ProductDetailsScreen extends StatelessWidget {
               Text(
                 wach.description,
                 style: const TextStyle(
+                  fontFamily: 'Crimson',
                   fontSize: 16.0,
                 ),
               ),
@@ -98,6 +101,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   '  Add to Cart',
                   style: TextStyle(
                     color: Colors.black,
+                    fontFamily: 'Crimson',
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),

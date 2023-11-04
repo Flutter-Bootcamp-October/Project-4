@@ -13,7 +13,7 @@ class FilterScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               'Select Category',
-              style: TextStyle(
+              style: TextStyle( fontFamily: 'Crimson',
                 color: Colors.black,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -57,7 +57,7 @@ class FilterScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               'Sort Watches By',
-              style: TextStyle(
+              style: TextStyle( fontFamily: 'Crimson',
                 color: Colors.black,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -104,7 +104,7 @@ class FilterScreen extends StatelessWidget {
             padding: EdgeInsets.all(16),
             child: Text(
               'Select a Price Range',
-              style: TextStyle(
+              style: TextStyle( fontFamily: 'Crimson',
                 color: Colors.black,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

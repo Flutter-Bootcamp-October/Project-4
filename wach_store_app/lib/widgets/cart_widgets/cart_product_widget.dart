@@ -41,7 +41,7 @@ class _CartProdectWidgetState extends State<CartProdectWidget> {
                   style: const TextStyle(
                     color: Color(0xff163368),
                     fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold, fontFamily: 'Crimson'
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -58,7 +58,7 @@ class _CartProdectWidgetState extends State<CartProdectWidget> {
                   '\$${widget.wach.price}',
                   style: const TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold, fontFamily: 'Crimson'
                   ),
                 ),
                 const SizedBox(height: 16),

@@ -94,11 +94,14 @@ class _SearchScreenState extends State<SearchScreen> {
                       return ListTile(
                         title: Row(
                           children: [
-                            Icon(Icons.av_timer_outlined),
-                            SizedBox(
+                            const Icon(Icons.av_timer_outlined),
+                            const SizedBox(
                               width: 8,
                             ),
-                            Text(wach.name),
+                            Text(
+                              wach.name,
+                              style: const TextStyle(fontFamily: 'Crimson'),
+                            ),
                           ],
                         ),
                       );

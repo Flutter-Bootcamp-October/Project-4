@@ -19,7 +19,7 @@ class DataDetailsSection extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-              fontSize: isGrandtotal ? 20 : 16,
+              fontSize: isGrandtotal ? 20 : 16, fontFamily: 'Crimson',
               fontWeight: isGrandtotal ? FontWeight.w800 : FontWeight.w500,
               color: textColor ? Colors.black : Colors.green[700]),
         ),
@@ -27,7 +27,7 @@ class DataDetailsSection extends StatelessWidget {
         Text(price,
             style: TextStyle(
               color: textColor ? Colors.black : Colors.green[700],
-              fontSize: isGrandtotal ? 20 : 16,
+              fontSize: isGrandtotal ? 20 : 16, fontFamily: 'Crimson',
               fontWeight: isGrandtotal ? FontWeight.w800 : FontWeight.w500,
             ))
       ],
