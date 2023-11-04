@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:shopping_app/consts/colors.dart';
+import 'package:shopping_app/extentions/navigation_extentions.dart';
 import 'package:shopping_app/global/global.dart';
+import 'package:shopping_app/screens/bottom_nav_bar.dart';
 import 'package:shopping_app/widgets/button_widget.dart';
 import 'package:shopping_app/widgets/textfield_widget.dart';
 
@@ -26,7 +28,9 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.removeUnitl(const AppBottonNabBar());
+            },
             icon: const Icon(Icons.arrow_back_ios_new_rounded)),
         title: const Text("My Profile"),
       ),

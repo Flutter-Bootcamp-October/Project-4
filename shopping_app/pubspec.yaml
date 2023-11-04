@@ -27,4 +27,4 @@ flutter:
   fonts:
   - family: RomanaBeckerDemi
     fonts:
-      - asset: lib/assets/fonts/Romana-Becker-Demi-Regular.ttf
+      - asset: assets/fonts/Romana-Becker-Demi-Regular.ttf

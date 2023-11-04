@@ -3,6 +3,7 @@ import 'package:shopping_app/consts/colors.dart';
 import 'package:shopping_app/extentions/navigation_extentions.dart';
 import 'package:shopping_app/global/global.dart';
 import 'package:shopping_app/models/user_model.dart';
+import 'package:shopping_app/screens/bottom_nav_bar.dart';
 import 'package:shopping_app/screens/profile_screen.dart';
 import 'package:shopping_app/screens/signin_screen.dart';
 import 'package:shopping_app/widgets/button_widget.dart';
@@ -86,7 +87,7 @@ class SignUpScreen extends StatelessWidget {
                           imagePath: 'lib/assets/images/empty_profile.png',
                           mobileNumber: '05656',
                           password: passwordController.text);
-                      print("current user: ${currentUser.fullName}");
+                      // print("current user: ${currentUser.fullName}");
                       if (usersList
                           .where((element) =>
                               element.email == emailController.text &&
@@ -101,7 +102,7 @@ class SignUpScreen extends StatelessWidget {
                                 "Seems like you're already a member. Please sign in instead")));
                       } else {
                         usersList.add(currentUser);
-                        context.pushScreen(const ProfileScreen());
+                        context.removeUnitl(const SignInScreen());
                       }
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

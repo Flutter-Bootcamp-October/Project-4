@@ -1,7 +1,9 @@
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:shopping_app/global/colors.dart';
+import 'package:shopping_app/consts/colors.dart';
 import 'package:shopping_app/screens/home_screen.dart';
+import 'package:shopping_app/screens/profile_screen.dart';
+import 'package:shopping_app/screens/search_screen.dart';
 
 class AppBottonNabBar extends StatefulWidget {
   const AppBottonNabBar({super.key});
@@ -13,9 +15,9 @@ class AppBottonNabBar extends StatefulWidget {
 class _AppBottonNabBarState extends State<AppBottonNabBar> {
   List<Widget> screensList = [
     const HomeScreen(),
+    const SearchScreen(),
     const HomeScreen(),
-    const HomeScreen(),
-    const HomeScreen()
+    const ProfileScreen()
   ];
   int selected = 0;
 

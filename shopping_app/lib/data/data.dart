@@ -24,7 +24,7 @@ List<Map> watches = [
     'price': 2199.99,
     'count': 0,
     'category': WatchCategory.classic,
-    'image': 'assets\\watch1.png',
+    'image': 'assets/images/watch1.png',
     'rating': 1.5
   },
   {
@@ -34,7 +34,7 @@ List<Map> watches = [
     'price': 1799.99,
     'count': 0,
     'category': WatchCategory.leather,
-    'image': 'assets\\watch2.png',
+    'image': 'assets/images/watch2.png',
     'rating': 5.0
   },
   {
@@ -44,7 +44,7 @@ List<Map> watches = [
     'price': 999.99,
     'count': 0,
     'category': WatchCategory.metallic,
-    'image': 'assets\\watch3.png',
+    'image': 'assets/images/watch3.png',
     'rating': 3.5
   },
   {
@@ -54,7 +54,7 @@ List<Map> watches = [
     'price': 2499.99,
     'count': 0,
     'category': WatchCategory.leather,
-    'image': 'assets\\watch4.png',
+    'image': 'assets/images/watch4.png',
     'rating': 4.5
   },
 ];

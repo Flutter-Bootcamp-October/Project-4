@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/consts/colors.dart';
+import 'package:shopping_app/extentions/navigation_extentions.dart';
 import 'package:shopping_app/global/global.dart';
 import 'package:shopping_app/models/user_model.dart';
+import 'package:shopping_app/screens/bottom_nav_bar.dart';
 import 'package:shopping_app/screens/signup_screen.dart';
 import 'package:shopping_app/widgets/button_widget.dart';
 import 'package:shopping_app/widgets/rich_text_widget.dart';
@@ -74,8 +76,9 @@ class SignInScreen extends StatelessWidget {
                   if (results.isNotEmpty) {
                     ScaffoldMessenger.of(context)
                         .showSnackBar(SnackBar(content: Text(results)));
+                  } else {
+                    context.removeUnitl(const AppBottonNabBar());
                   }
-                  //else go home
                 },
                 radius: 20,
               ),
@@ -88,15 +91,7 @@ class SignInScreen extends StatelessWidget {
                   "Sign in with Google",
                   style: TextStyle(color: Colors.black),
                 ),
-                onPressed: () {
-                  String results = preformedChecks(
-                      emailController, passwordController, context);
-                  if (results.isNotEmpty) {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text(results)));
-                  }
-                  //else go home
-                },
+                onPressed: () {},
                 radius: 20,
               ),
               const SizedBox(height: 20),
