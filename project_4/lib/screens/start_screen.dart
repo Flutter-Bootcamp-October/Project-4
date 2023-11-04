@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_4/widgets/elevated_button.dart';
 
 import 'sign_in_screen.dart';
 
@@ -18,7 +19,8 @@ class _StartScreenState extends State<StartScreen> {
           Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/watch-start.jpeg'), fit: BoxFit.cover)),
+                    image: AssetImage('assets/images/start.png'),
+                    fit: BoxFit.cover)),
           ),
           const Positioned(
             top: 100,
@@ -29,12 +31,18 @@ class _StartScreenState extends State<StartScreen> {
                 children: [
                   Text('Universal Timekepers',
                       style: TextStyle(
-                          color: Colors.white, fontSize: 30, fontFamily: 'PlayfairDisplay')),
+
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontFamily: 'PlayfairDisplay')),
                   Text('of the World',
                       style: TextStyle(
-                          color: Colors.white, fontSize: 30, fontFamily: 'PlayfairDisplay')),
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontFamily: 'PlayfairDisplay')),
                   Padding(
-                    padding: EdgeInsets.only(top: 8.0),
+                    padding: EdgeInsets.only(top: 16),
+
                     child: Text(
                       'it is a long established fact that a reader will',
                       style: TextStyle(
@@ -61,23 +69,19 @@ class _StartScreenState extends State<StartScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20))),
-                minimumSize: const Size(400, 50),
-                backgroundColor: Colors.amber),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignInScreen(),
-                  ));
-            },
-            child: const Text(
-              'Get Started',
-              style: TextStyle(color: Colors.black),
-            )),
+
+        child: CustomElevatedButton(
+          text: 'Sign Up',
+          color: const Color(0xfffccf78),
+          onPressedFunc: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SignInScreen(),
+                ));
+          },
+        ),
+
       ),
     );
   }
