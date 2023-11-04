@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+import 'package:shopingpriject/models/user_model.dart';
+
+List<User> userList = [];
+late User currentUser;
+List<User> listdata = [];
+=======
 import 'package:shopingpriject/models/product_model.dart';
 
 List<Product> listProucts=[];
@@ -12,3 +19,4 @@ void calculateGlobalPrice() {
   }
   print(globalPrice);
 }
+>>>>>>> af75baf704b8ba4de0f3beff0787746675d94997
