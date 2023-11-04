@@ -19,6 +19,7 @@ class _FilterScreenState extends State<FilterScreen> {
   int categorySelected = 0;
   int sortWaySelected = 0;
   bool isVisable = false;
+  List<Product> filteredList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -151,11 +152,10 @@ class _FilterScreenState extends State<FilterScreen> {
                 height: 350,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: productList.length,
+                    itemCount: filteredList.length,
                     shrinkWrap: true,
                     itemBuilder: (_, index) {
-                      List<Product> filteredProduct = [];
-                      return ShowWatch(product: productList[index]);
+                      return ShowWatch(product: filteredList[index]);
                     }),
               ),
             ),
@@ -167,6 +167,48 @@ class _FilterScreenState extends State<FilterScreen> {
           buttonChild: const Text("Apply"),
           onPressed: () {
             isVisable = true;
+            filteredList = [];
+            if (categorySelected == 0) {
+              for (var product in productList) {
+                if (currentRangeValues.start < product.price &&
+                    currentRangeValues.end > product.price) {
+                  filteredList.add(product);
+                }
+              }
+            } else if (categorySelected == 1) {
+              for (var product in productList) {
+                if (product.category == WatchCategory.metallic &&
+                    currentRangeValues.start < product.price &&
+                    currentRangeValues.end > product.price) {
+                  filteredList.add(product);
+                }
+              }
+            } else if (categorySelected == 2) {
+              for (var product in productList) {
+                if (product.category == WatchCategory.leather &&
+                    currentRangeValues.start < product.price &&
+                    currentRangeValues.end > product.price) {
+                  filteredList.add(product);
+                }
+              }
+            } else if (categorySelected == 4) {
+              for (var product in productList) {
+                if (product.category == WatchCategory.classic &&
+                    currentRangeValues.start < product.price &&
+                    currentRangeValues.end > product.price) {
+                  filteredList.add(product);
+                }
+              }
+            }
+
+            if (sortWaySelected == 0) {
+              filteredList.sort((a, b) => a.price.compareTo(b.price));
+            } else if (sortWaySelected == 1) {
+              filteredList.sort((a, b) => a.rating.compareTo(b.rating));
+            } else if (sortWaySelected == 4) {
+              filteredList.sort((a, b) => a.discount.compareTo(b.discount));
+            }
+
             setState(() {});
           },
           radius: 20),

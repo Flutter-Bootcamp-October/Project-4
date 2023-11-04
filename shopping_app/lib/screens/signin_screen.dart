@@ -27,81 +27,84 @@ class SignInScreen extends StatelessWidget {
       Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: Colors.transparent,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 320),
-              const Align(
-                alignment: Alignment.topLeft,
-                child: Text("Let's Sign in",
-                    style: TextStyle(
-                        color: Color(0xff1e3867),
-                        fontSize: 30,
-                        fontFamily: 'RomanaBeckerDemi')),
-              ),
-              const SizedBox(height: 10),
-              const Align(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              children: [
+                const SizedBox(height: 320),
+                const Align(
                   alignment: Alignment.topLeft,
-                  child: Text("Fill the details below to continue.",
-                      style: TextStyle(fontSize: 13))),
-              const SizedBox(height: 30),
-              TextFieldCustom(
-                controller: emailController,
-                hint: 'Enter Username or Email',
-                labelText: const Text("Username or Email"),
-                icon: const Icon(Icons.email_outlined),
-              ),
-              const SizedBox(height: 25),
-              TextFieldCustom(
-                controller: passwordController,
-                isPassword: true,
-                hint: 'Enter Password',
-                labelText: const Text("Password"),
-                icon: const Icon(Icons.remove_red_eye_outlined),
-              ),
-              Align(
-                  alignment: Alignment.bottomRight,
-                  child: TextButton(
-                      onPressed: () {}, child: const Text("Forgot Password?"))),
-              const SizedBox(height: 12),
-              ButtonCustom(
-                buttonColor: globalButtonColor,
-                buttonChild: const Text(
-                  "Sign in",
-                  style: TextStyle(color: Colors.black),
+                  child: Text("Let's Sign in",
+                      style: TextStyle(
+                          color: Color(0xff1e3867),
+                          fontSize: 30,
+                          fontFamily: 'RomanaBeckerDemi')),
                 ),
-                onPressed: () {
-                  String results = preformedChecks(
-                      emailController, passwordController, context);
-                  if (results.isNotEmpty) {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text(results)));
-                  } else {
-                    context.removeUnitl(const AppBottonNabBar());
-                  }
-                },
-                radius: 20,
-              ),
-              const SizedBox(height: 10),
-              const Text("OR"),
-              const SizedBox(height: 10),
-              ButtonCustom(
-                buttonColor: const Color(0xfff9f8f8),
-                buttonChild: const Text(
-                  "Sign in with Google",
-                  style: TextStyle(color: Colors.black),
+                const SizedBox(height: 10),
+                const Align(
+                    alignment: Alignment.topLeft,
+                    child: Text("Fill the details below to continue.",
+                        style: TextStyle(fontSize: 13))),
+                const SizedBox(height: 30),
+                TextFieldCustom(
+                  controller: emailController,
+                  hint: 'Enter Username or Email',
+                  labelText: const Text("Username or Email"),
+                  icon: const Icon(Icons.email_outlined),
                 ),
-                onPressed: () {},
-                radius: 20,
-              ),
-              const SizedBox(height: 20),
-              const RichTextCustom(
-                text1: 'New to ADS Watch? ',
-                text2: 'Sign up',
-                screen: SignUpScreen(),
-              )
-            ],
+                const SizedBox(height: 25),
+                TextFieldCustom(
+                  controller: passwordController,
+                  isPassword: true,
+                  hint: 'Enter Password',
+                  labelText: const Text("Password"),
+                  icon: const Icon(Icons.remove_red_eye_outlined),
+                ),
+                Align(
+                    alignment: Alignment.bottomRight,
+                    child: TextButton(
+                        onPressed: () {},
+                        child: const Text("Forgot Password?"))),
+                const SizedBox(height: 12),
+                ButtonCustom(
+                  buttonColor: globalButtonColor,
+                  buttonChild: const Text(
+                    "Sign in",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onPressed: () {
+                    String results = preformedChecks(
+                        emailController, passwordController, context);
+                    if (results.isNotEmpty) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text(results)));
+                    } else {
+                      context.removeUnitl(const AppBottonNabBar());
+                    }
+                  },
+                  radius: 20,
+                ),
+                const SizedBox(height: 10),
+                const Text("OR"),
+                const SizedBox(height: 10),
+                ButtonCustom(
+                  buttonColor: const Color(0xfff9f8f8),
+                  buttonChild: const Text(
+                    "Sign in with Google",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onPressed: () {},
+                  radius: 20,
+                ),
+                const SizedBox(height: 20),
+                const RichTextCustom(
+                  text1: 'New to ADS Watch? ',
+                  text2: 'Sign up',
+                  screen: SignUpScreen(),
+                )
+              ],
+            ),
           ),
         ),
       )

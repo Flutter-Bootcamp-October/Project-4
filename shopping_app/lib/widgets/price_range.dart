@@ -8,23 +8,23 @@ class PriceRange extends StatefulWidget {
   State<PriceRange> createState() => _PriceRangeState();
 }
 
-class _PriceRangeState extends State<PriceRange> {
-  RangeValues _currentRangeValues = const RangeValues(0, 10000);
+RangeValues currentRangeValues = const RangeValues(0, 10000);
 
+class _PriceRangeState extends State<PriceRange> {
   @override
   Widget build(BuildContext context) {
     return RangeSlider(
-      values: _currentRangeValues,
+      values: currentRangeValues,
       max: 10000,
       divisions: 50,
       activeColor: appYellow,
       labels: RangeLabels(
-        "\$${_currentRangeValues.start.round().toString()}",
-        "\$${_currentRangeValues.end.round().toString()}",
+        "\$${currentRangeValues.start.round().toString()}",
+        "\$${currentRangeValues.end.round().toString()}",
       ),
       onChanged: (RangeValues values) {
         setState(() {
-          _currentRangeValues = values;
+          currentRangeValues = values;
         });
       },
     );

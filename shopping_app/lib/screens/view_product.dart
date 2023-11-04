@@ -100,7 +100,7 @@ class _ViewProfuctState extends State<ViewProfuct> {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 8.0, left: 16),
+            padding: EdgeInsets.only(left: 16),
             child: Text(
               "Rating",
               style: TextStyle(
