@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/consts/colors.dart';
+import 'package:shopping_app/global/global.dart';
 import 'package:shopping_app/models/product_model.dart';
+import 'package:shopping_app/screens/my_order_screen.dart';
+import 'package:shopping_app/widgets/button_widget.dart';
+import 'package:shopping_app/widgets/my_app_bar.dart';
 
 class ViewProfuct extends StatefulWidget {
   const ViewProfuct({super.key, required this.prodect});
@@ -15,31 +19,10 @@ class _ViewProfuctState extends State<ViewProfuct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: Colors.black,
-          ),
-        ),
-        title: Text(
-          widget.prodect.name,
-          style: const TextStyle(color: Colors.black),
-        ),
-        centerTitle: true,
-        actions: const [
-          Icon(
-            Icons.shopping_bag_outlined,
-            color: Colors.black,
-          ),
-          SizedBox(width: 8)
-        ],
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: MyAppBar(
+          leadingIcon: Icons.arrow_back_ios_new_rounded,
+          title: widget.prodect.name,
+          actionIcon: Icons.shopping_bag_outlined),
       body: ListView(
         children: [
           Center(child: Image.asset(widget.prodect.image)),
@@ -61,7 +44,7 @@ class _ViewProfuctState extends State<ViewProfuct> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      "\$${widget.prodect.price}",
+                      "\$${(widget.prodect.price * count).toStringAsFixed(2)}",
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
@@ -91,7 +74,7 @@ class _ViewProfuctState extends State<ViewProfuct> {
                   ),
                   InkWell(
                     onTap: () {
-                      if (count > 0) {
+                      if (count > 1) {
                         count--;
                       }
                       setState(() {});
@@ -110,14 +93,14 @@ class _ViewProfuctState extends State<ViewProfuct> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
               widget.prodect.description,
               style: const TextStyle(color: Colors.grey),
             ),
           ),
           const Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.only(left: 16),
             child: Text(
               "Rating",
               style: TextStyle(
@@ -126,6 +109,7 @@ class _ViewProfuctState extends State<ViewProfuct> {
           ),
           Row(
             children: [
+              const SizedBox(width: 8),
               Icon(Icons.star_rounded,
                   color: widget.prodect.rating >= 1.0
                       ? Colors.amber
@@ -146,9 +130,54 @@ class _ViewProfuctState extends State<ViewProfuct> {
                   color:
                       widget.prodect.rating == 5.0 ? Colors.amber : Colors.grey)
             ],
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 8.0, left: 16),
+            child: Text(
+              "Discount",
+              style: TextStyle(
+                  color: appBlue, fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child:
+                Text("${(widget.prodect.discount * 100).toStringAsFixed(0)}%"),
           )
         ],
       ),
+      floatingActionButton: ButtonCustom(
+          buttonColor: appYellow,
+          buttonChild: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.shopping_bag_outlined,
+                color: Colors.black,
+              ),
+              Text(
+                "Add to cart",
+                style: TextStyle(color: Colors.black),
+              )
+            ],
+          ),
+          onPressed: () {
+            widget.prodect.count += count;
+            if (!currentUser.cart.contains(widget.prodect)) {
+              currentUser.cart.add(widget.prodect);
+            } else {
+              for (var prodect in currentUser.cart) {
+                if (prodect == widget.prodect) {
+                  prodect.count = widget.prodect.count;
+                }
+              }
+            }
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const MyOrderScreen();
+            }));
+          },
+          radius: 20),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

@@ -1,9 +1,12 @@
+import 'package:shopping_app/models/product_model.dart';
+
 class User {
   String fullName;
   String email;
   String password;
   String imagePath;
   String mobileNumber;
+  List<Product> cart = [];
 
   User(
       {required this.email,

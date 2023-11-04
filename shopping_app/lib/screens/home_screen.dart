@@ -35,21 +35,23 @@ class HomeScreen extends StatelessWidget {
           centerTitle: true,
           actions: [
             IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const FilterScreen()));
-                },
-                icon: const Icon(
-                  Icons.filter_list_rounded,
-                  color: Colors.black,
-                )),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FilterScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.filter_list_rounded,
+                color: Colors.black,
+              ),
+            ),
             const SizedBox(width: 8)
           ],
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        body: ListView(
           children: [
             const Padding(
               padding: EdgeInsets.only(top: 16, left: 16),
@@ -61,8 +63,10 @@ class HomeScreen extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.only(left: 16, bottom: 32),
-              child: Text("Chose your top Brands",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              child: Text(
+                "Chose your top Brands",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ),
             TabBar(
               padding: const EdgeInsets.all(8),
@@ -80,7 +84,8 @@ class HomeScreen extends StatelessWidget {
                 Text("BestCollection"),
               ],
             ),
-            Expanded(
+            SizedBox(
+              height: 330,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: productList.length,
@@ -98,15 +103,17 @@ class HomeScreen extends StatelessWidget {
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Text(
-                    "View All",
+                    "See All",
                     style: TextStyle(color: appBlue),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              width: 123,
-              height: 150,
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(25),
+                  child: Image.asset("assets/images/ad.jpg")),
             )
           ],
         ),
