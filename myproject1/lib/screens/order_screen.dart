@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopingpriject/data/global.dart';
 import 'package:shopingpriject/extenstions/navigator.dart';
+import 'package:shopingpriject/screens/chacekout_screen.dart';
 import 'package:shopingpriject/wedgets/discount.dart';
 import 'package:shopingpriject/wedgets/free_delivery.dart';
 import 'package:shopingpriject/wedgets/item_total.dart';
@@ -29,11 +30,11 @@ class OrderScreenState extends State<OrderScreen> {
           },
             child: Icon(Icons.arrow_back_ios)),
           Text("My Orders",style: TextStyle(fontSize: 20),),
-          Icon(Icons.exit_to_app_outlined)
+          Icon(Icons.close)
         ],),
       ),
 SizedBox(
-  width: 389,height: 400,
+  width: 389,height: 350,
   child:   ListView.separated(
   
                         shrinkWrap: true,
@@ -92,7 +93,12 @@ SizedBox(
                         SizedBox(width: 150,),
                         Text("\$${(globalPrice-globalPrice/22).toStringAsFixed(2)}",style: TextStyle(fontSize: 17,fontWeight:FontWeight.bold ),)
                       ],),
-                      Container(width: 360,height: 55,decoration: BoxDecoration(borderRadius: BorderRadius.circular(26), color: Color(0xfffcc874)),child: Center(child: Text("Checkout",style: TextStyle(fontSize: 18),)),)
+                      InkWell(
+                        onTap: () {
+                          context.pushScreen(ChacekOutScreen());
+                        
+                        },
+                        child: Container(width: 360,height: 55,decoration: BoxDecoration(borderRadius: BorderRadius.circular(26), color: Color(0xfffcc874)),child: Center(child: Text("Checkout",style: TextStyle(fontSize: 18),)),))
                       
     ],),);
   }

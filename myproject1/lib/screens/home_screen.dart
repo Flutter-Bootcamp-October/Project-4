@@ -37,13 +37,13 @@ bool selcted=false;
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-          Icon(Icons.filter_list,),
+          Icon(Icons.list_sharp,),
           Container(
             width: 150,
             height: 50,
             
             child: Image.asset("lib\\assets\\imges\\img10.png",fit: BoxFit.fitWidth,)),
-            Icon(Icons.more)
+            Icon(Icons.filter_list)
         ],),
       ),
    Column(
@@ -99,7 +99,10 @@ bool selcted=false;
       
      ],),
    ),
-                    ProductsGridView()
+                    ProductsGridView(),
+                    
+                    
+                    
 
     ],
     ),
