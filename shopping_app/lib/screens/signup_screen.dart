@@ -3,8 +3,6 @@ import 'package:shopping_app/consts/colors.dart';
 import 'package:shopping_app/extentions/navigation_extentions.dart';
 import 'package:shopping_app/global/global.dart';
 import 'package:shopping_app/models/user_model.dart';
-import 'package:shopping_app/screens/bottom_nav_bar.dart';
-import 'package:shopping_app/screens/profile_screen.dart';
 import 'package:shopping_app/screens/signin_screen.dart';
 import 'package:shopping_app/widgets/button_widget.dart';
 import 'package:shopping_app/widgets/rich_text_widget.dart';
