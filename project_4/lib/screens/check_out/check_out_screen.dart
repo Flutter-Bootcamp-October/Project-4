@@ -56,7 +56,7 @@ class CheckOutScreen extends StatelessWidget {
                   return AlertDialog.adaptive(
                     title: const Text("Congratulations"),
                     content: Text(
-                        "You have bought ${numberOfPurchasedItems} item/s\nTotal cost = $rupeeIcon$totalBoughtCost\n\nWe will contact you soon"),
+                        "You have bought $numberOfPurchasedItems item/s\nTotal cost = $rupeeIcon$totalBoughtCost\n\nWe will contact you soon"),
                   );
                 }).then((value) => Navigator.pop(context));
           }),

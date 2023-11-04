@@ -17,12 +17,3 @@ ValueNotifier<double> grandTotal = ValueNotifier(0.0);
 ValueNotifier<double> itemsTotal = ValueNotifier(0.0);
 
 double discount = 0;
-
-// double itemsTotal = 0;
-
-// void calculateGlobalPrice() {
-//   grandTotal.value = 0;
-//   for (var element in cartList) {
-//     grandTotal.value += element.itemsTotal * element.price;
-//   }
-// }
