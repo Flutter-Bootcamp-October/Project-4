@@ -19,7 +19,7 @@ class SignUpScreen extends StatelessWidget {
 
     return Stack(children: [
       Image.asset(
-        'lib/assets/images/signup.png',
+        'assets/images/signup.png',
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         fit: BoxFit.cover,
