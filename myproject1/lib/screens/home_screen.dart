@@ -6,6 +6,7 @@ import 'package:shopingpriject/data/proudct_data.dart';
 import 'package:shopingpriject/models/product_model.dart';
 import 'package:shopingpriject/wedgets/filter_wedget.dart';
 import 'package:shopingpriject/wedgets/tap_bar.dart';
+import 'package:badges/badges.dart' as badges;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -37,10 +38,12 @@ bool selcted=false;
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-          Icon(Icons.list_sharp,),
+          badges.Badge(badgeContent: Text("1"),child: Icon(Icons.shopping_bag_rounded),),
+          
           Container(
             width: 150,
             height: 50,
+            
             
             child: Image.asset("lib\\assets\\imges\\img10.png",fit: BoxFit.fitWidth,)),
             Icon(Icons.filter_list)

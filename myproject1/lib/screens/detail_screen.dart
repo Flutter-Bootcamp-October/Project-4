@@ -53,7 +53,7 @@ class _DetilScreenState extends State<DetilScreen> {
       ),
      Container(
   width: 350.0, // Specify the width you want
-  height: 52.0, // Make height equal to width for a square shape
+  height: 52.0,
   child: FloatingActionButton(
     elevation: 0,
     backgroundColor: Color(0xfffcc874),
