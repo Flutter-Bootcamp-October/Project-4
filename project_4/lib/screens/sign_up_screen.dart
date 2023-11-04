@@ -17,6 +17,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Stack(children: [
         Container(
           decoration: const BoxDecoration(
@@ -43,6 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             color: Color.fromARGB(255, 2, 32, 84)),
                       ),
                     ],
+
                   ),
                 ),
                 const Row(

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-customAppBar({required String title, required BuildContext context, required bool hasAction}) {
+customAppBar(
+    {required String title,
+    required BuildContext context,
+    required bool hasAction,
+    required Function() onPressedFunc}) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
     leading: IconButton(
-      icon: const Icon(Icons.arrow_back_ios_rounded, color: Colors.black, size: 20),
-      onPressed: () {
-        Navigator.pop(context);
-      },
-    ),
+        icon: const Icon(Icons.arrow_back_ios_rounded, color: Colors.black, size: 20),
+        onPressed: onPressedFunc),
     title: Text(
       title,
       style: const TextStyle(

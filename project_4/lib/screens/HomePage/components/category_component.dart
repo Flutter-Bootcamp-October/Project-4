@@ -49,7 +49,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
         ),
       ),
       selected: selectedIndex == index,
-      selectedColor: Color(0xfffccf78),
+      selectedColor: const Color(0xfffccf78),
       onSelected: (value) {
         setState(() {
           selectedIndex = index;

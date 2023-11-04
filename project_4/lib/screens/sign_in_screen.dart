@@ -72,6 +72,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       controller: passwordController,
                       isPassword: true),
                 ),
+
                 const Padding(
                   padding: EdgeInsets.only(top: 16),
                   child: Row(
@@ -97,6 +98,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ));
                     },
                   ),
+
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: 16),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_4/screens/filter/filter_screen.dart';
 
-PreferredSizeWidget homeAppBarWidget() {
+PreferredSizeWidget homeAppBarWidget({required BuildContext context}) {
   return AppBar(
       centerTitle: true,
       backgroundColor: Colors.white,
@@ -10,13 +11,18 @@ PreferredSizeWidget homeAppBarWidget() {
         color: Colors.black,
         size: 25,
       ),
-      actions: const [
-        Icon(
-          Icons.filter_list,
-          color: Colors.black,
-          size: 25,
+      actions: [
+        InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const FilterScreen()));
+          },
+          child: const Icon(
+            Icons.filter_list,
+            color: Colors.black,
+            size: 25,
+          ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 12,
         )
       ],

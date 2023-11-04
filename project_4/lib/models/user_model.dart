@@ -1,6 +1,6 @@
 class User {
-  final String name, email, password, mobileNumber, userAvatar;
-  final List<Map> address;
+  String? name, email, password, mobileNumber, userAvatar;
+  List<Map>? address;
 
   User(
       {required this.address,

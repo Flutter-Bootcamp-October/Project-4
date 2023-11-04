@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:project_4/data/global_data.dart';
+import 'package:project_4/data/watch_data_set.dart';
+import 'package:project_4/models/watch_model.dart';
 
 import 'components/app_bar_widget.dart';
 import 'components/category_component.dart';
-import 'components/product_widget.dart';
+import 'components/product_list_widget.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});
@@ -13,10 +16,20 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   @override
+  void initState() {
+    if (watchesList.isEmpty) {
+      for (var element in watches) {
+        watchesList.add(Watch.fromJson(element));
+      }
+    }
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: homeAppBarWidget(),
+      appBar: homeAppBarWidget(context: context),
       body: const Padding(
         padding: EdgeInsets.all(18),
         child: Column(
@@ -38,16 +51,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
               height: 20,
             ),
             SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  ProductWidget(),
-                  SizedBox(
-                    width: 30,
-                  ),
-                ],
-              ),
-            )
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ProductListWidget(),
+                  ],
+                )),
           ],
         ),
       ),

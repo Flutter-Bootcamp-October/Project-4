@@ -12,16 +12,16 @@ class SearchFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
-          prefixIcon: Padding(
+          prefixIcon: const Padding(
             padding: EdgeInsets.only(left: 20),
             child: Icon(
               Icons.search,
               size: 30,
             ),
           ),
-          suffixIcon: Padding(
+          suffixIcon: const Padding(
             padding: EdgeInsets.only(right: 20),
-            child: const Icon(
+            child: Icon(
               Icons.close,
               color: Colors.black,
             ),

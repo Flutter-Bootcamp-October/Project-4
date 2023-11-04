@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:project_4/models/watch_model.dart';
 
 class ProductBackgroundWidget extends StatelessWidget {
   const ProductBackgroundWidget({
     super.key,
+    required this.watch,
   });
 
+  final Watch watch;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -21,11 +24,12 @@ class ProductBackgroundWidget extends StatelessWidget {
                   bottomRight: Radius.circular(35)),
               color: Color(0xfff9f8f8)),
         ),
-        const Positioned(
-          top: 200,
-          left: 185,
-          child: Text('image'),
-        ),
+        Positioned(
+            left: 100,
+            child: Image.asset(
+              watch.image,
+              height: 415,
+            )),
       ],
     );
   }
