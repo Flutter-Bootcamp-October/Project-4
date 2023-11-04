@@ -19,7 +19,7 @@ class SignInScreen extends StatelessWidget {
 
     return Stack(children: [
       Image.asset(
-        'lib/assets/images/signin.png',
+        'assets/images/signin.png',
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         fit: BoxFit.cover,
