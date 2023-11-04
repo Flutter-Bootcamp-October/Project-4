@@ -19,6 +19,7 @@ class _ProfileTextFieldState extends State<ProfileTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: TextField(
+        controller: widget.controller,
         decoration: InputDecoration(
           labelText: widget.label,
           suffixIcon: Icon(

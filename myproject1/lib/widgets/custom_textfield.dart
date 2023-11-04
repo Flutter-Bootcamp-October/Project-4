@@ -5,14 +5,14 @@ class CustomTextField extends StatefulWidget {
   final String hint;
   final IconData icon;
   final bool obscureText;
-  final TextEditingController? controller;
+  final TextEditingController controller;
 
   CustomTextField({
     required this.label,
     required this.hint,
     required this.icon,
     this.obscureText = false,
-    this.controller,
+    required this.controller,
 
     //required String? Function(dynamic value) validator,
   });
@@ -31,6 +31,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: TextField(
+          controller: widget.controller,
           obscureText: widget.obscureText,
           decoration: InputDecoration(
             labelText: widget.label,

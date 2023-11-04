@@ -13,57 +13,13 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailorusernameController = TextEditingController();
-  TextEditingController paswwordController = TextEditingController();
-
-  bool isEmailUsed = false;
-
-  void signUp() {
-    String name = nameController.text;
-    String emailOrUsername = emailorusernameController.text;
-    String password = paswwordController.text;
-
-    if (name.isNotEmpty && emailOrUsername.isNotEmpty && password.isNotEmpty) {
-      bool emailExists = userList.any((user) => user.email == emailOrUsername);
-
-      if (emailExists) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Email already exists")),
-        );
-      } else {
-        User newUser = User(
-          name: name,
-          email: emailOrUsername,
-          password: password,
-        );
-
-        userList.add(newUser);
-
-        isEmailUsed = false;
-
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const SignInScreen(),
-          ),
-        );
-      }
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please fill in all fields")),
-      );
-    }
-    /* for (var user in userList) {
-      print("Name: ${user.name}");
-      print("Email: ${user.email}");
-      print("Password: ${user.password}");
-      print("---------------");
-    }*/
-  }
-
   @override
   Widget build(BuildContext context) {
+    bool isMatched = false;
+    TextEditingController nameController = TextEditingController();
+    TextEditingController emailorusernameController = TextEditingController();
+    TextEditingController paswwordController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       resizeToAvoidBottomInset: false,
@@ -127,7 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 CustomTextField(
                   label: "Full Name",
                   hint: "Enter Name Here",
-                  icon: Icons.remove_red_eye_outlined,
+                  icon: Icons.person_2_outlined,
                   controller: nameController,
                 ),
                 SizedBox(
@@ -147,7 +103,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: CustomButton(
                     text: "Sign up",
                     buttonColor: Colors.amber,
-                    onPressed: signUp,
+                    onPressed: () {
+                      print("Name: ${nameController.text}");
+                      print(
+                          "Email/Username: ${emailorusernameController.text}");
+                      print("Password: ${paswwordController.text}");
+                      if (nameController.text.isNotEmpty &&
+                          emailorusernameController.text.isNotEmpty &&
+                          paswwordController.text.isNotEmpty) {
+                        for (var user in userList) {
+                          if (user.email == emailorusernameController.text) {
+                            isMatched = true;
+                          }
+                        }
+                        if (!isMatched) {
+                          User newUser = User(
+                              name: nameController.text,
+                              email: emailorusernameController.text,
+                              password: paswwordController.text);
+                          currentUser = newUser;
+
+                          userList.add(newUser);
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignInScreen(),
+                              ));
+                        } else {
+                          isMatched = false;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Email is used")));
+                        }
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text("Please insert all text fields")));
+                      }
+                    },
                   ),
                 ),
                 SizedBox(height: 10),
@@ -157,11 +151,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Text("Joined us before?"),
                     SizedBox(width: 5),
-                    Text(
-                      "Sign in",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue[900],
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignInScreen(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Sign in",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue[900],
+                        ),
                       ),
                     ),
                   ],

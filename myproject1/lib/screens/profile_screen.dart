@@ -9,12 +9,18 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  TextEditingController userController =
+  /* TextEditingController userController =
           TextEditingController(text: currentUser.name),
       emailController = TextEditingController(text: currentUser.email),
-      paswwordController = TextEditingController(text: currentUser.password);
+      paswwordController = TextEditingController(text: currentUser.password);*/
+
   @override
   Widget build(BuildContext context) {
+    print("nameprof:${currentUser.name}");
+    TextEditingController userController =
+            TextEditingController(text: currentUser.name),
+        emailController = TextEditingController(text: currentUser.email),
+        paswwordController = TextEditingController(text: currentUser.password);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -45,12 +51,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ProfileTextField(label: "Mobile Number"),
           ProfileTextField(
             label: "Email Address",
-            controller: userController,
+            controller: emailController,
           ),
           ProfileTextField(
             label: "Password",
             icon: Icons.remove_red_eye_outlined,
-            controller: userController,
+            controller: paswwordController,
           ),
           SizedBox(height: 20),
           Padding(

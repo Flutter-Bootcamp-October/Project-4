@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SearchWidget extends StatelessWidget {
-  final String text; // Make the text a required parameter
+  final String text;
 
   SearchWidget({
     Key? key,
-    required this.text, // Declare text as a required parameter
+    required this.text,
   }) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class SearchWidget extends StatelessWidget {
             width: 10,
           ),
           Text(
-            text, // Use the text parameter here
+            text,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ],

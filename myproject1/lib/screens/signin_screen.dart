@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopingpriject/custom_profiletextfield.dart/custom_button.dart';
 import 'package:shopingpriject/data/global.dart';
+//import 'package:shopingpriject/models/user_model.dart';
 import 'package:shopingpriject/screens/profile_screen.dart';
 import 'package:shopingpriject/screens/signup_Screen.dart';
 import 'package:shopingpriject/widgets/custom_textfield.dart';
@@ -20,11 +21,16 @@ class _SignInScreenState extends State<SignInScreen> {
     String usernameOrEmail = emailorusernameController.text;
     String password = paswwordController.text;
 
-    bool isSignInSuccessful = userList.any(
-      (user) =>
-          (user.email == usernameOrEmail || user.name == usernameOrEmail) &&
-          user.password == password,
-    );
+    bool isSignInSuccessful = false;
+
+    for (var user in userList) {
+      if ((user.email == usernameOrEmail || user.name == usernameOrEmail) &&
+          user.password == password) {
+        currentUser = user;
+        isSignInSuccessful = true;
+        break;
+      }
+    }
 
     if (isSignInSuccessful) {
       showDialog(
@@ -139,17 +145,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: CustomButton(
-                    text: "Sign in",
-                    buttonColor: Colors.amber,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
-                        ),
-                      );
-                    },
-                  ),
+                      text: "Sign in",
+                      buttonColor: Colors.amber,
+                      onPressed: signIn),
                 ),
                 SizedBox(height: 10),
                 Align(alignment: Alignment.bottomCenter, child: Text("OR")),
@@ -175,11 +173,21 @@ class _SignInScreenState extends State<SignInScreen> {
                   children: [
                     Text("New to ADS Watch?"),
                     SizedBox(width: 5),
-                    Text(
-                      "Sign in",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue[900],
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpScreen(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue[900],
+                        ),
                       ),
                     ),
                   ],
