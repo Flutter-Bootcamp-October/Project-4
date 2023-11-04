@@ -13,7 +13,7 @@ class WelcomeScreen extends StatelessWidget {
     return Stack(
       children: [
         Image.asset(
-          'lib/assets/images/welcome.png',
+          'assets/images/welcome.png',
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,
