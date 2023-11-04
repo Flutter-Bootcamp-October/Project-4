@@ -13,6 +13,10 @@ dependencies:
   syncfusion_flutter_core: ^23.1.43
   syncfusion_flutter_sliders: ^23.1.43
 
+  shimmer: ^3.0.0
+  flutter_advanced_drawer: ^1.3.5
+
+
 
 dev_dependencies:
   flutter_test:

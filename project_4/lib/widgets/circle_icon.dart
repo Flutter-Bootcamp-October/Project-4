@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CircleIcon extends StatelessWidget {
   const CircleIcon({
@@ -18,8 +19,16 @@ class CircleIcon extends StatelessWidget {
           width: 40,
           height: 40,
           decoration: const BoxDecoration(
-              color: Color(0xFFFAC672), borderRadius: BorderRadius.all(Radius.circular(60))),
-          child: IconButton(onPressed: onPressedFunc, icon: Icon(iconData))),
+              color: Color(0xFFFAC672),
+              borderRadius: BorderRadius.all(Radius.circular(60))),
+          child: Shimmer.fromColors(
+              baseColor: Colors.white,
+              highlightColor: Colors.grey,
+              child: IconButton(
+                  onPressed: onPressedFunc,
+                  icon: Icon(
+                    iconData,
+                  )))),
     );
   }
 }

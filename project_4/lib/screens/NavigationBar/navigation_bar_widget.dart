@@ -1,6 +1,10 @@
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
+
+import 'package:project_4/screens/HomePage/homepage_screen_drawer.dart';
+
 import 'package:project_4/screens/HomePage/homepage_screen.dart';
+
 import 'package:project_4/screens/SearchPage/search_screen.dart';
 import 'package:project_4/screens/order/order_screen.dart';
 import 'package:project_4/screens/profile/profile_screen.dart';
@@ -12,9 +16,11 @@ class BottomNavBar extends StatefulWidget {
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
+
 class _BottomNavBarState extends State<BottomNavBar> with TickerProviderStateMixin {
   List<Widget> screens = [
-    const HomePageScreen(),
+    const HomePageScreenDrawer(),
+
     const SearchScreen(),
     const OrderScreen(isBottomNavBar: true),
     const ProfileScreen(),
