@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 class ProfileTextField extends StatefulWidget {
   final String label;
   IconData? icon;
+  final TextEditingController? controller;
 
-  ProfileTextField({required this.label, this.icon});
+  ProfileTextField(
+      {super.key, required this.label, this.icon, this.controller});
 
   @override
   State<ProfileTextField> createState() => _ProfileTextFieldState();

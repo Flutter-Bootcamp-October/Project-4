@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopingpriject/custom_profiletextfield.dart/custom_button.dart';
+import 'package:shopingpriject/data/global.dart';
+import 'package:shopingpriject/screens/profile_screen.dart';
 import 'package:shopingpriject/screens/signup_Screen.dart';
 import 'package:shopingpriject/widgets/custom_textfield.dart';
 
@@ -11,6 +13,51 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  TextEditingController emailorusernameController = TextEditingController();
+  TextEditingController paswwordController = TextEditingController();
+
+  void signIn() {
+    String usernameOrEmail = emailorusernameController.text;
+    String password = paswwordController.text;
+
+    bool isSignInSuccessful = userList.any(
+      (user) =>
+          (user.email == usernameOrEmail || user.name == usernameOrEmail) &&
+          user.password == password,
+    );
+
+    if (isSignInSuccessful) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Sign-in Successful'),
+            content: Text('You have successfully signed in!'),
+            actions: <Widget>[
+              TextButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Invalid credentials")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +116,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     label: "Username or Email",
                     hint: "Enter Username or Email",
                     icon: Icons.email_outlined,
+                    controller: emailorusernameController,
                   ),
                 ),
                 SizedBox(height: 20),
@@ -77,6 +125,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   hint: "Enter password",
                   icon: Icons.remove_red_eye_outlined,
                   obscureText: true,
+                  controller: paswwordController,
                 ),
                 SizedBox(height: 10),
                 Align(

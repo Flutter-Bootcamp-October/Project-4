@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopingpriject/custom_profiletextfield.dart/custom_button.dart';
+import 'package:shopingpriject/data/global.dart';
+import 'package:shopingpriject/models/user_model.dart';
 import 'package:shopingpriject/screens/signin_screen.dart';
-
 import 'package:shopingpriject/widgets/custom_textfield.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -12,6 +13,55 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailorusernameController = TextEditingController();
+  TextEditingController paswwordController = TextEditingController();
+
+  bool isEmailUsed = false;
+
+  void signUp() {
+    String name = nameController.text;
+    String emailOrUsername = emailorusernameController.text;
+    String password = paswwordController.text;
+
+    if (name.isNotEmpty && emailOrUsername.isNotEmpty && password.isNotEmpty) {
+      bool emailExists = userList.any((user) => user.email == emailOrUsername);
+
+      if (emailExists) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Email already exists")),
+        );
+      } else {
+        User newUser = User(
+          name: name,
+          email: emailOrUsername,
+          password: password,
+        );
+
+        userList.add(newUser);
+
+        isEmailUsed = false;
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const SignInScreen(),
+          ),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please fill in all fields")),
+      );
+    }
+    /* for (var user in userList) {
+      print("Name: ${user.name}");
+      print("Email: ${user.email}");
+      print("Password: ${user.password}");
+      print("---------------");
+    }*/
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     label: "Username or Email",
                     hint: "Enter Username or Email",
                     icon: Icons.email_outlined,
+                    controller: emailorusernameController,
                   ),
                 ),
                 SizedBox(height: 20),
@@ -77,7 +128,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   label: "Full Name",
                   hint: "Enter Name Here",
                   icon: Icons.remove_red_eye_outlined,
-                  obscureText: true,
+                  controller: nameController,
                 ),
                 SizedBox(
                   height: 20,
@@ -87,22 +138,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   hint: "Enter password",
                   icon: Icons.remove_red_eye_outlined,
                   obscureText: true,
+                  controller: paswwordController,
                 ),
                 SizedBox(height: 10),
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: CustomButton(
-                    text: "Sign in",
+                    text: "Sign up",
                     buttonColor: Colors.amber,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignInScreen(),
-                        ),
-                      );
-                    },
+                    onPressed: signUp,
                   ),
                 ),
                 SizedBox(height: 10),

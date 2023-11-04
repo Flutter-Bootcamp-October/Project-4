@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:shopingpriject/data/global.dart';
 import 'package:shopingpriject/widgets/custom_profiletextfield.dart';
 import 'package:shopingpriject/widgets/custom_updatebutton.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  TextEditingController userController =
+          TextEditingController(text: currentUser.name),
+      emailController = TextEditingController(text: currentUser.email),
+      paswwordController = TextEditingController(text: currentUser.password);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,12 +38,19 @@ class ProfileScreen extends StatelessWidget {
             radius: 40,
           ),
           SizedBox(height: 30),
-          ProfileTextField(label: "Name"),
+          ProfileTextField(
+            label: "Name",
+            controller: userController,
+          ),
           ProfileTextField(label: "Mobile Number"),
-          ProfileTextField(label: "Email Address"),
+          ProfileTextField(
+            label: "Email Address",
+            controller: userController,
+          ),
           ProfileTextField(
             label: "Password",
             icon: Icons.remove_red_eye_outlined,
+            controller: userController,
           ),
           SizedBox(height: 20),
           Padding(
