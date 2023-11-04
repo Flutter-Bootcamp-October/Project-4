@@ -25,7 +25,9 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar(context, true, Icons.close, 'My Order'),
+      appBar: appbar(context, true, Icons.close, 'My Order', () {
+        Navigator.pop(context);
+      }),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),

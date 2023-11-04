@@ -21,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: appbar(context, false, Icons.close, 'My Profile'),
+      appBar: appbar(context, false, Icons.close, 'My Profile',(){}),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 50),

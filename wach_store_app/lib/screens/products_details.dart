@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wach_store_app/global/global.dart';
 import 'package:wach_store_app/models/wach_model.dart';
+import 'package:wach_store_app/screens/cart_screen.dart';
 import 'package:wach_store_app/widgets/appbar/app_bar.dart';
 import 'package:wach_store_app/widgets/cart_widgets/row_circle_button_widget.dart';
 
@@ -11,7 +13,8 @@ class ProductDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: appbar(context, true, Icons.shopping_bag_outlined, wach.name),
+      appBar:
+          appbar(context, true, Icons.shopping_bag_outlined, wach.name, () {}),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -67,7 +70,16 @@ class ProductDetailsScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            // if (!orderProducts.contains(wach)) {
+            //   orderProducts.add(wach);
+            //   wach.count = wach.count! + 1;
+            // } else {
+            //   wach.count = wach.count! + 1;
+            // }
+            // Navigator.push(
+            //     context, MaterialPageRoute(builder: (context) => CartScreen()));
+          },
           child: Container(
             width: double.infinity,
             height: 45,
