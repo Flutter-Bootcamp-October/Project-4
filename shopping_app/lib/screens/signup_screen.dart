@@ -85,7 +85,7 @@ class SignUpScreen extends StatelessWidget {
                             email: emailController.text,
                             fullName: nameController.text,
                             imagePath: 'assets/images/empty_profile.png',
-                            mobileNumber: '05656',
+                            mobileNumber: '0555555555',
                             password: passwordController.text);
                         // print("current user: ${currentUser.fullName}");
                         if (usersList
