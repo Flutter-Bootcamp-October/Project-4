@@ -90,8 +90,7 @@ class SignUpScreen extends StatelessWidget {
                         // print("current user: ${currentUser.fullName}");
                         if (usersList
                             .where((element) =>
-                                element.email == emailController.text &&
-                                element.fullName != currentUser.fullName)
+                                element.email == emailController.text)
                             .isNotEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                               content: Text(
