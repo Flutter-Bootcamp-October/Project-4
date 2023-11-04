@@ -1,70 +1,48 @@
-# Project-4
+## Project Overview
+   is digital tool designed to help users create personal profile and manage items of watches mainly that they want to purchase. it includes adding, editing, clearing and deleting products. 
+   
+## Screenshots
+1- welcome screen:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/33743281-3306-44dd-a6ba-4656dfe1c6c6)
 
-## Congratulations!
+2- sign up screen:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/d6753569-ae0d-4ecf-8d8e-1318a882f0fa)
 
-Congratulations on reaching this phase of the course! Over the next few days, you will be working on the fourth project that will allow you to further apply your knowledge and skills to build another real-world application. This project will serve as a demonstration of your proficiency in Global Data Management, focusing on understanding Flutter's architecture, project structure, widgets, global data management, and data manipulation concepts.
+3- sign in screen:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/409771ee-10de-4251-b2c8-dbec64adf5d3)
 
-## Description
+4- home screen:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/e6674f22-c863-4ea7-a00d-5a141ad0e0e6)
 
-Your task is to create a Flutter app that demonstrates global data management for a shopping app. The app should allow users to add, view, update, and remove items from their shopping cart. Global data management should be used to efficiently store and manage the shopping app items.
+5- search screen:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/81a1747d-0ecc-4942-a129-8cccdeeb3666)
 
-## Rules & Guidelines
+6- edit profile:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/a101cab9-1861-4770-8660-3127556b5a7d)
 
-1. **Version Control (Git):**
-   - Create a Fork from the exam’s GitHub repository.
-   - Create a new branch with your name, i.e., Nawaf-Alshawan.
-   - Commit frequently with descriptive messages to show your progress.
-   - Finally, create a Pull Request to the exam’s original repository containing your solution.
-2. **Academic Integrity:** Do not copy or reuse code from previous modules or external sources. The exam is a showcase of your learning progress.
-3. **Learning References:** You may refer to course materials and code examples as learning references, but implement your solutions independently.
-4. **Instructor Support:** The instructor will be available for general questions and guidance throughout the exam.
+7- filter screen:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/112f3cd4-0112-498a-9453-54300cfe1d96)
 
-## Schedule & Deadlines
+8- show product:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/8dfa2927-f48a-4477-9e68-7246fab0130e)
 
-- **Project Start Date:** 2/11/2023 - 3:00 PM
-- **Project Submission Deadline:** 5/11/2023 – 9:59 PM
+9- cart screen:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/48fdcabe-1e73-45ad-afa5-37972b456d63)
 
-## Minimum Requirements
+10- checkout screen:
+![image](https://github.com/LMogdad/Project-4/assets/87881470/b127768b-81e4-4fc3-b8a9-82e86596b78c)
 
-Your task is to create a Flutter app that demonstrates global data management for a shopping app. The app should allow users to add, view, update, and remove items from their shopping lists in the cart. Please note the following:
+## Features
+- The app allows the user to create an account and buy watches.
+- The user can see history of search and can display certian watches using filters, that include price and watch type.
+- The user can add product in cart and purchase them.
+- The user can increment and decrement product quantities and update profile informations. 
 
-- **Correct Structure:** Ensure that the application is built with the appropriate structure. Follow Flutter's best practices for organizing code and project files.
-- **Clean Code:** Write code that is clear, well-organized, and scalable. Use meaningful variable and function names and follow standard coding conventions to improve code readability.
-- **Applying Concepts:** Make proper use of programming concepts and techniques. Implement efficient algorithms and follow Flutter's design patterns to create a robust and functional shopping list app.
-- **Global Variable Management:** Implement global variable management techniques to efficiently store and manage the shopping list items. Create a global List variable that holds the shopping list items, and use this variable to maintain the state of the items throughout the app.
-- **Data Representation:** Treat shopping list items as objects using a model. Create a model class to define the structure of a shopping list item, including attributes like name, quantity, etc.
-- **User Interactions:** Users should be able to perform the following actions:
-  - Add: Add new items to their shopping list along with relevant details like name, quantity, etc.
-  - View: Display the list of items in the shopping list with their details.
-  - Update: Allow users to modify the details of any item in the shopping list.
-  - Remove: Enable users to delete items from the shopping list.
-- **User Authentication:** Implement a user registration and login system to allow multiple users to have their own personalized shopping lists.
-- **Utilizing Packages:** It is required that you use at least 3 packages from *pub.dev*.
+## Technologies Used
+we used several technology in our project to help us complete it. the following technologies and library used in our project:
+1- dot_navigation_bar version 1.0.2: library
+2- badges version 3.1.2: library
+3- input_history_text_field version 0.2.0: library
+4- VS Code: editor
+5- figma: to see the given UI
 
-## Ideas for Extra Credit
-
-1. **Categories and Sorting:** Add support for categorizing shopping list items. Users can assign items to different categories such as groceries, household items, or personal care. Implement sorting options based on categories, alphabetical order, or user-defined priorities!
-2. **Coupons and Deals:** Integrate with coupon and deal APIs to provide users with relevant discounts and offers for the items on their shopping list. Users can save money by taking advantage of available deals.
-
-## Delivery Requirements
-
-- **Upload the Entire Project:** Ensure that you upload the complete project, which includes all necessary code files, assets, and configurations, to the repository on GitHub.
-- **Readme File:**
-  - Create a README.md file in the root directory of your GitHub repository.
-  - Provide a detailed and well-structured description of the project in the README file, including the following sections:
-    - **Project Overview:** Briefly describe what the shopping list app is about and its main features. Give readers a clear idea of the purpose and functionality of the app.
-    - **Screenshots:** Include relevant screenshots of the app to showcase its appearance and functionalities. Visuals can help users understand the app's design and layout.
-    - **Features:** List all the features and functionalities of the app. Mention the core capabilities of the app, such as adding items to the shopping list, updating items, deleting items, etc.
-    - **Technologies Used:** Mention the technologies and libraries utilized in the development of the app. This could include mentioning Flutter, specific plugins used, or any other relevant technologies.
-
-
-## Design Link
-<a href="https://www.figma.com/file/jmLvvSpadKxMjLmJ7XCyyE/Watch-Store-App-UI-Kit-(Community)?type=design&node-id=847%3A42244&mode=design&t=5hKrAUkhsX4uqB4P-1"> Figma Link</a>
-
-## Resources
-
-- [Dart Tutorials](https://dart.dev/tutorials)
-- [Flutter Documentation](https://docs.flutter.dev/)
-- [Flutter Tutorial by GeeksforGeeks](https://www.geeksforgeeks.org/flutter-tutorial/)
-
-Good luck with your exam project! If you have any general questions or need guidance, don't hesitate to reach out to the instructor. Happy coding!
