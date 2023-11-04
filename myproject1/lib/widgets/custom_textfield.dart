@@ -5,13 +5,16 @@ class CustomTextField extends StatefulWidget {
   final String hint;
   final IconData icon;
   final bool obscureText;
+  final TextEditingController controller;
 
-  CustomTextField({
+  const CustomTextField({
+    Key? key,
     required this.label,
     required this.hint,
     required this.icon,
     this.obscureText = false,
-  });
+    required this.controller,
+  }) : super(key: key);
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopingpriject/screens/filter_screen.dart';
 import 'package:shopingpriject/screens/nav_bar.dart';
+import 'package:shopingpriject/screens/signup_Screen.dart';
 
 
 void main() {
@@ -14,7 +15,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return  MaterialApp(
-      home: NavBar()
+      home: SignUpScreen()
          
       
 

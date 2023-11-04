@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopingpriject/custom_profiletextfield.dart/custom_button.dart';
+import 'package:shopingpriject/data/global.dart';
+import 'package:shopingpriject/models/user_model.dart';
 import 'package:shopingpriject/screens/signin_screen.dart';
-
 import 'package:shopingpriject/widgets/custom_textfield.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -12,10 +13,43 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailorusernameController = TextEditingController();
+  TextEditingController paswwordController = TextEditingController();
+
+  bool isEmailUsed = false;
+
+  void signUp() {
+    String name = nameController.text;
+    String emailOrUsername = emailorusernameController.text;
+    String password = paswwordController.text;
+
+     if (name.isNotEmpty && emailOrUsername.isNotEmpty && password.isNotEmpty) {
+      bool emailExists = userList.any((user) => user.email == emailOrUsername);
+
+      if (!emailExists) {
+        User newUser = User(name: name, email: emailOrUsername, password: password);
+        userList.add(newUser);
+        Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context) => const SignInScreen(),
+          
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Email already exists")),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please fill in all fields")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.only(
@@ -67,42 +101,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: CustomTextField(
-                    label: "Username or Email",
-                    hint: "Enter Username or Email",
-                    icon: Icons.email_outlined,
+              label: "Username or Email",
+              hint: "Enter Username or Email",
+              icon: Icons.email_outlined,
+              controller: emailorusernameController,
                   ),
                 ),
                 SizedBox(height: 20),
                 CustomTextField(
                   label: "Full Name",
                   hint: "Enter Name Here",
-                  icon: Icons.remove_red_eye_outlined,
-                  obscureText: true,
+                  icon: Icons.person_2_outlined,
+                  controller: nameController,
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 CustomTextField(
-                  label: "Password",
-                  hint: "Enter password",
-                  icon: Icons.remove_red_eye_outlined,
-                  obscureText: true,
+              label: "Password",
+              hint: "Enter password",
+              icon: Icons.remove_red_eye_outlined,
+              obscureText: true,
+              controller: paswwordController,
                 ),
                 SizedBox(height: 10),
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: CustomButton(
-                    text: "Sign in",
-                    buttonColor: Colors.amber,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignInScreen(),
-                        ),
-                      );
-                    },
+              text: "Sign up",
+              buttonColor: Colors.amber,
+              onPressed: signUp,
                   ),
                 ),
                 SizedBox(height: 10),
@@ -112,11 +141,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Text("Joined us before?"),
                     SizedBox(width: 5),
-                    Text(
-                      "Sign in",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue[900],
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignInScreen(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Sign in",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue[900],
+                        ),
                       ),
                     ),
                   ],
