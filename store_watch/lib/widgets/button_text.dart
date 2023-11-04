@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ButtonText extends StatelessWidget {
-  const ButtonText({super.key, required this.title, required this.titleButton});
+  const ButtonText(
+      {super.key,
+      required this.title,
+      required this.titleButton,
+      required this.onTap});
 
   final String title;
   final String titleButton;
+  final Function() onTap;
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -12,7 +17,7 @@ class ButtonText extends StatelessWidget {
           style: const TextStyle(
               fontSize: 14, color: Colors.black, fontWeight: FontWeight.w500)),
       InkWell(
-        onTap: () {},
+        onTap: onTap,
         child: Text(
           titleButton,
           style: const TextStyle(

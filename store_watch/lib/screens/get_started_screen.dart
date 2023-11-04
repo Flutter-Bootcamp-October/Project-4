@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_watch/screens/signin_up.dart';
+import 'package:store_watch/screens/signin_screen.dart';
 import 'package:store_watch/widgets/circle.dart';
 import 'package:store_watch/widgets/praimery_button.dart';
 
@@ -56,8 +56,7 @@ class GetStarted extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignInUp()),
+                            MaterialPageRoute(builder: (context) => SignInUp()),
                           );
                         }),
                   ],

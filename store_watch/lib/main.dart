@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:store_watch/screens/profile.dart';
-import 'package:store_watch/screens/signin_up.dart';
+import 'package:store_watch/screens/profile_screen.dart';
+import 'package:store_watch/screens/signup_screen.dart';
+import 'package:store_watch/screens/signin_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,9 +12,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignInUp(),
+      home: SignUp(),
     );
   }
 }
