@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopingpriject/widgets/custom_profiletextfield.dart';
 import 'package:shopingpriject/widgets/custom_updatebutton.dart';
 
+
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -43,5 +44,20 @@ class ProfileScreen extends StatelessWidget {
         ],
       ),
     );
+
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Column(children: [
+      Center(child: Text("ProfileScreen"))
+    ],),);
+
   }
 }
