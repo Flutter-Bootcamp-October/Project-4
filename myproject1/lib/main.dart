@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:shopingpriject/screens/filter_screen.dart';
-import 'package:shopingpriject/screens/nav_bar.dart';
-import 'package:shopingpriject/screens/signup_Screen.dart';
 
+
+
+import 'package:flutter/material.dart';
+import 'package:shopingpriject/screens/nav_bar.dart';
+import 'package:shopingpriject/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,10 +15,14 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return  MaterialApp(
-      home: NavBar()
+    return MaterialApp(
+      home: WelcomeScreen(),
+      debugShowCheckedModeBanner: false,
+
+
+   
          
-      
+    
 
     );
   }

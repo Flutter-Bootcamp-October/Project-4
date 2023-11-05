@@ -48,6 +48,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool isMatched = false;
+    TextEditingController nameController = TextEditingController();
+    TextEditingController emailorusernameController = TextEditingController();
+    TextEditingController paswwordController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
@@ -101,10 +106,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: CustomTextField(
-              label: "Username or Email",
-              hint: "Enter Username or Email",
-              icon: Icons.email_outlined,
-              controller: emailorusernameController,
+                    label: "Username or Email",
+                    hint: "Enter Username or Email",
+                    icon: Icons.email_outlined,
+                    controller: emailorusernameController,
                   ),
                 ),
                 SizedBox(height: 20),
@@ -118,20 +123,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 20,
                 ),
                 CustomTextField(
-              label: "Password",
-              hint: "Enter password",
-              icon: Icons.remove_red_eye_outlined,
-              obscureText: true,
-              controller: paswwordController,
+                  label: "Password",
+                  hint: "Enter password",
+                  icon: Icons.remove_red_eye_outlined,
+                  obscureText: true,
+                  controller: paswwordController,
                 ),
                 SizedBox(height: 10),
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: CustomButton(
-              text: "Sign up",
-              buttonColor: Colors.amber,
-              onPressed: signUp,
+                    text: "Sign up",
+                    buttonColor: Colors.amber,
+                    onPressed: () {
+                      print("Name: ${nameController.text}");
+                      print(
+                          "Email/Username: ${emailorusernameController.text}");
+                      print("Password: ${paswwordController.text}");
+                      if (nameController.text.isNotEmpty &&
+                          emailorusernameController.text.isNotEmpty &&
+                          paswwordController.text.isNotEmpty) {
+                        for (var user in userList) {
+                          if (user.email == emailorusernameController.text) {
+                            isMatched = true;
+                          }
+                        }
+                        if (!isMatched) {
+                          User newUser = User(
+                              name: nameController.text,
+                              email: emailorusernameController.text,
+                              password: paswwordController.text);
+                          currentUser = newUser;
+
+                          userList.add(newUser);
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignInScreen(),
+                              ));
+                        } else {
+                          isMatched = false;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Email is used")));
+                        }
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text("Please insert all text fields")));
+                      }
+                    },
                   ),
                 ),
                 SizedBox(height: 10),

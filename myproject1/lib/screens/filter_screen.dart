@@ -26,6 +26,7 @@ class _FilterScreenState extends State<FilterScreen> {
             color: Colors.black,
           ),
           onPressed: () {
+            Navigator.pop(context);
             // Handle back button click
           },
         ),

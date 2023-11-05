@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shopingpriject/custom_profiletextfield.dart/custom_button.dart';
 import 'package:shopingpriject/data/global.dart';
-import 'package:shopingpriject/screens/profile_screen.dart';
+import 'package:shopingpriject/models/product_model.dart';
+import 'package:shopingpriject/models/user_items.dart';
+import 'package:shopingpriject/models/user_model.dart';
+import 'package:shopingpriject/screens/nav_bar.dart';
 import 'package:shopingpriject/screens/signup_Screen.dart';
 import 'package:shopingpriject/widgets/custom_textfield.dart';
 
@@ -16,15 +19,25 @@ class _SignInScreenState extends State<SignInScreen> {
   TextEditingController emailorusernameController = TextEditingController();
   TextEditingController paswwordController = TextEditingController();
 
+
+
   void signIn() {
     String usernameOrEmail = emailorusernameController.text;
     String password = paswwordController.text;
 
-    bool isSignInSuccessful = userList.any(
-      (user) =>
-          (user.email == usernameOrEmail || user.name == usernameOrEmail) &&
-          user.password == password,
-    );
+    bool isSignInSuccessful = false;
+ 
+  
+
+    for (var user in userList) {
+      if ((user.email == usernameOrEmail || user.name == usernameOrEmail) &&
+          user.password == password) {
+        currentUser = user;
+        isSignInSuccessful = true;
+       
+        break;
+      }
+    }
 
     if (isSignInSuccessful) {
       showDialog(
@@ -42,7 +55,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ProfileScreen(),
+                      builder: (context) => NavBar(),
                     ),
                   );
                 },
@@ -56,6 +69,9 @@ class _SignInScreenState extends State<SignInScreen> {
         const SnackBar(content: Text("Invalid credentials")),
       );
     }
+  }
+void addToBasket(Product product) {
+    currentUser.basket.add(product);
   }
 
   @override
@@ -194,3 +210,4 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 }
+

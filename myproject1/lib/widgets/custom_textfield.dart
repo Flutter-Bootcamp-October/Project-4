@@ -14,7 +14,9 @@ class CustomTextField extends StatefulWidget {
     required this.icon,
     this.obscureText = false,
     required this.controller,
-  }) : super(key: key);
+
+    //required String? Function(dynamic value) validator,
+  });
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -30,6 +32,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: TextField(
+          controller: widget.controller,
           obscureText: widget.obscureText,
           decoration: InputDecoration(
             labelText: widget.label,

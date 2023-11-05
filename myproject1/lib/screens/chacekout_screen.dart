@@ -16,6 +16,31 @@ class Proudct {
 }
 
 class _ChacekOutScreenState extends State<ChacekOutScreen> {
+  final TextEditingController _couponController = TextEditingController();
+  double discountAmount = 0.0;
+  bool isCouponApplied = false;
+
+  void _applyCoupon() {
+    if (_couponController.text == 'CODE10') {
+      setState(() {
+        discountAmount = globalPrice * 0.1;
+        isCouponApplied = true;
+      });
+    } else {
+      // Handle the case where the coupon code is not valid
+      setState(() {
+        discountAmount = 0.0;
+        isCouponApplied = false;
+      });
+      // Show an alert or a notification to the user
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Invalid Coupon Code'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: Column(children: [
@@ -81,15 +106,44 @@ class _ChacekOutScreenState extends State<ChacekOutScreen> {
     Discount(),
     FreeDelivery(),
     Divider(thickness: 1.5,),
-    SizedBox(height: 20,),
+     Padding(
+            padding: const EdgeInsets.all(0),
+            child: TextField(
+              controller: _couponController,
+              decoration: InputDecoration(
+                labelText: 'Coupon Code',
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.card_giftcard),
+                  onPressed: _applyCoupon,
+                ),
+              ),
+            ),
+          ), if (isCouponApplied)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Discount",
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "-\$${discountAmount.toStringAsFixed(2)}",
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
                           Row(
                         mainAxisAlignment: MainAxisAlignment. spaceEvenly,
                         children: [
                         Text("Grand Total",style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
                         SizedBox(width: 150,),
-                        Text("\$${(globalPrice-globalPrice/22).toStringAsFixed(2)}",style: TextStyle(fontSize: 17,fontWeight:FontWeight.bold ),)
+                        Text("\$${(globalPrice-(globalPrice/22)-discountAmount).toStringAsFixed(2)}",style: TextStyle(fontSize: 17,fontWeight:FontWeight.bold ),)
                       ],),
-                          SizedBox(height: 20,),
+                        
+                         
 
                       InkWell(
                         onTap: () {

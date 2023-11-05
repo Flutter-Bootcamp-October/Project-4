@@ -1,26 +1,47 @@
+import 'package:shopingpriject/data/global.dart';
+import 'package:shopingpriject/models/product_model.dart';
+import 'package:shopingpriject/models/user_items.dart';
+
 class User {
-  int? userId;
+  String? userid;
   String? name;
   String? email;
   String? password;
-  static int count = 0;
+  String? phone;
+  String? address;
+  String? city;
+  String? state;
 
-  User({required this.name, required this.email, required this.password}) {
-    count++;
-    userId = count;
-  }
+  String? pincode;
+  List<Product> basket = [];
 
-  factory User.fromJson(Map json) {
-    return User(
-        name: json["name"], email: json["email"], password: json["password"]);
-  }
 
-  Map toJson() {
-    return {
-      "userId": userId,
-      "name": name,
-      "email": email,
-      "password": password
-    };
-  }
+  User({
+    this.name,
+    this.email,
+    this.password,
+    this.phone,
+    this.address,
+    this.city,
+    this.state,
+    this.pincode,
+    this.userid,
+  });
+
+  factory User.fromJson(Map json) => User(
+        name: json["name"],
+        email: json["email"],
+        password: json["password"],
+        phone: json["phone"],
+        address: json["address"],
+        city: json["city"],
+        state: json["state"],
+        pincode: json["pincode"],
+        userid: json["userid"],
+      );
+      void additem(String item,String userId){
+  itemlist.add(UserItems(items: item,userId:userId ));
+
+
+}
 }

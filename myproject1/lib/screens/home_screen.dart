@@ -4,6 +4,7 @@ import 'package:shopingpriject/Home/proudcts_gridview.dart';
 import 'package:shopingpriject/data/global.dart';
 import 'package:shopingpriject/data/proudct_data.dart';
 import 'package:shopingpriject/models/product_model.dart';
+import 'package:shopingpriject/screens/filter_screen.dart';
 import 'package:shopingpriject/wedgets/filter_wedget.dart';
 import 'package:shopingpriject/wedgets/tap_bar.dart';
 import 'package:badges/badges.dart' as badges;
@@ -46,7 +47,11 @@ bool selcted=false;
             
             
             child: Image.asset("lib\\assets\\imges\\img10.png",fit: BoxFit.fitWidth,)),
-            Icon(Icons.filter_list)
+            InkWell(
+              onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => FilterScreen(),));
+              },
+              child: Icon(Icons.filter_list))
         ],),
       ),
    Column(
