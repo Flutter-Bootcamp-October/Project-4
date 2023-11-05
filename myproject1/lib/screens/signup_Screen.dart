@@ -13,6 +13,39 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailorusernameController = TextEditingController();
+  TextEditingController paswwordController = TextEditingController();
+
+  bool isEmailUsed = false;
+
+  void signUp() {
+    String name = nameController.text;
+    String emailOrUsername = emailorusernameController.text;
+    String password = paswwordController.text;
+
+     if (name.isNotEmpty && emailOrUsername.isNotEmpty && password.isNotEmpty) {
+      bool emailExists = userList.any((user) => user.email == emailOrUsername);
+
+      if (!emailExists) {
+        User newUser = User(name: name, email: emailOrUsername, password: password);
+        userList.add(newUser);
+        Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context) => const SignInScreen(),
+          
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Email already exists")),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please fill in all fields")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isMatched = false;
@@ -21,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     TextEditingController paswwordController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.only(

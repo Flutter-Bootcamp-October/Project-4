@@ -7,8 +7,8 @@ class ProfileTextField extends StatefulWidget {
   final TextEditingController? controller;
 
   ProfileTextField(
-      {super.key, required this.label, this.icon, this.controller});
-
+      {super.key, required this.label, this.icon, this.controller,  this.text});
+final String? text;
   @override
   State<ProfileTextField> createState() => _ProfileTextFieldState();
 }
@@ -19,6 +19,7 @@ class _ProfileTextFieldState extends State<ProfileTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
       child: TextField(
+        
         controller: widget.controller,
         decoration: InputDecoration(
           labelText: widget.label,

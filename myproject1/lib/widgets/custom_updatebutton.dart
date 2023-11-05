@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopingpriject/data/global.dart';
 
 class UpdateButton extends StatefulWidget {
   @override
@@ -8,6 +9,10 @@ class UpdateButton extends StatefulWidget {
 class _UpdateButtonState extends State<UpdateButton> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController userController =
+            TextEditingController(text: currentUser.name),
+        emailController = TextEditingController(text: currentUser.email),
+        paswwordController = TextEditingController(text: currentUser.password);
     return Padding(
       padding: const EdgeInsets.only(bottom: 50),
       child: Container(
@@ -26,7 +31,32 @@ class _UpdateButtonState extends State<UpdateButton> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                if (userController.text.isNotEmpty &&
+                    emailController.text.isNotEmpty &&
+                    paswwordController.text.isNotEmpty) {
+                  currentUser.name = userController.text;
+                  currentUser.email = emailController.text;
+                  currentUser.password = paswwordController.text;
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog.adaptive(
+                        title:
+                            const Text("Changes has been Seaved successfully!"),
+                        actions: [
+                          TextButton(
+                            child: const Text('OK'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
               child: Text(
                 "Update",
                 style: TextStyle(color: Colors.black),
@@ -34,7 +64,7 @@ class _UpdateButtonState extends State<UpdateButton> {
             ),
           ),
         ),
-      ),
+      )
     );
   }
 }

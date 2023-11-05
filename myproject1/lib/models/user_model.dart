@@ -1,3 +1,7 @@
+import 'package:shopingpriject/data/global.dart';
+import 'package:shopingpriject/models/product_model.dart';
+import 'package:shopingpriject/models/user_items.dart';
+
 class User {
   String? userid;
   String? name;
@@ -9,6 +13,8 @@ class User {
   String? state;
 
   String? pincode;
+  List<Product> basket = [];
+
 
   User({
     this.name,
@@ -33,4 +39,9 @@ class User {
         pincode: json["pincode"],
         userid: json["userid"],
       );
+      void additem(String item,String userId){
+  itemlist.add(UserItems(items: item,userId:userId ));
+
+
+}
 }

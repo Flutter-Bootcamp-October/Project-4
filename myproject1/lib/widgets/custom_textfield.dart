@@ -7,7 +7,8 @@ class CustomTextField extends StatefulWidget {
   final bool obscureText;
   final TextEditingController controller;
 
-  CustomTextField({
+  const CustomTextField({
+    Key? key,
     required this.label,
     required this.hint,
     required this.icon,

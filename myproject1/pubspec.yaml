@@ -12,6 +12,8 @@ dependencies:
   flutter_snake_navigationbar: ^0.6.1
   google_nav_bar: ^5.0.6
   dot_navigation_bar:
+  badges: ^3.1.2
+  shimmer: ^3.0.0
 
 
 dev_dependencies:
@@ -35,6 +37,8 @@ flutter:
     - lib\assets\imges\img8.png
     - lib\assets\imges\img9.png
     - lib\assets\imges\img 11.png
+    - lib\assets\imges\madterimg.png
+    - lib\assets\imges\paypalimg.png
   fonts:
     - family: Unna
       fonts:
