@@ -21,7 +21,8 @@
 
 5- search screen:
 
-![image](https://github.com/LMogdad/Project-4/assets/87881470/81a1747d-0ecc-4942-a129-8cccdeeb3666)
+<img width="497" alt="Screenshot 2023-11-05 at 9 51 07 AM" src="https://github.com/Raff22/Project-4/assets/86999942/128aec71-24b6-452d-bc9a-d8963a66e40e">
+
 
 6- edit profile:
 
