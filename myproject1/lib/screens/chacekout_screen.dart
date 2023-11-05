@@ -19,6 +19,7 @@ class _ChacekOutScreenState extends State<ChacekOutScreen> {
   final TextEditingController _couponController = TextEditingController();
   double discountAmount = 0.0;
   bool isCouponApplied = false;
+  
 
   void _applyCoupon() {
     if (_couponController.text == 'CODE10') {
@@ -43,7 +44,10 @@ class _ChacekOutScreenState extends State<ChacekOutScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(children: [
+    
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Column(children: [
       SizedBox(height: 50,),
    Padding(
      padding: const EdgeInsets.all(20),
