@@ -17,10 +17,19 @@ class _CartProdectWidgetState extends State<CartProdectWidget> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            widget.wach.image,
-            width: 100,
-            height: 100,
+          Stack(
+            children: [
+              Image.asset(
+                'lib\\assets\\backgraund.jpg',
+                width: 120,
+                height: 120,
+              ),
+              Image.asset(
+                widget.wach.image,
+                width: 100,
+                height: 100,
+              ),
+            ],
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -32,7 +41,7 @@ class _CartProdectWidgetState extends State<CartProdectWidget> {
                   style: const TextStyle(
                     color: Color(0xff163368),
                     fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold, fontFamily: 'Crimson'
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -49,7 +58,7 @@ class _CartProdectWidgetState extends State<CartProdectWidget> {
                   '\$${widget.wach.price}',
                   style: const TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold, fontFamily: 'Crimson'
                   ),
                 ),
                 const SizedBox(height: 16),

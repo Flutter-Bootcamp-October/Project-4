@@ -18,7 +18,7 @@ class _WachNavigationBarState extends State<WachNavigationBar> {
   List screen = [
     FilterScreen(),
     const SearchScreen(),
-    MyOrderScreen(),
+    CartScreen(),
     const ProfileScreen()
   ];
 
@@ -36,7 +36,11 @@ class _WachNavigationBarState extends State<WachNavigationBar> {
           setState(() {
             if (i == 2) {
               Navigator.push(context,
+<<<<<<< HEAD
                   MaterialPageRoute(builder: (context) => MyOrderScreen()));
+=======
+                  MaterialPageRoute(builder: (context) => CartScreen()));
+>>>>>>> main
             }
             index = i;
             _selectedTab = _SelectedTab.values[i];

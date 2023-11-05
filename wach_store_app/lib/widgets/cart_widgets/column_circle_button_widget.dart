@@ -31,14 +31,14 @@ class _ColumnCircleButtonState extends State<ColumnCircleButton> {
           ),
         ),
         const SizedBox(
-          height: 4,
+          height: 8,
         ),
         Text(
           '$amount',
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
         const SizedBox(
-          height: 4,
+          height: 8,
         ),
         Container(
           width: 30,

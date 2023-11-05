@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:wach_store_app/widgets/appbar/app_bar.dart';
+import 'package:wach_store_app/widgets/edit_button.dart';
+import 'package:wach_store_app/widgets/profile_widget/profile_textfield_passwerd.dart';
 import 'package:wach_store_app/widgets/profile_widget/profile_textfield_widget.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  TextEditingController nameController =
+          TextEditingController(/*text: UserObject.name*/),
+      emailController = TextEditingController(/*text: UserObject.email*/),
+      mobileController = TextEditingController(/*text: UserObject.mobile*/),
+      paswwordController = TextEditingController(/*text: UserObject.password*/);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: appbar(context, false, Icons.close, 'My Profile'),
+      appBar: appbar(context, false, Icons.close, 'My Profile',(){}),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 50),
@@ -48,43 +60,47 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(
                 height: 38,
               ),
-              const ProfileTextField(
+              ProfileTextField(
                 lable: 'Name',
+                Controller: nameController,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const ProfileTextField(
+              ProfileTextField(
                 lable: 'Mobile Number',
+                Controller: mobileController,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const ProfileTextField(
+              ProfileTextField(
                 lable: 'Email Address',
+                Controller: emailController,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const ProfileTextField(
+              ProfileTextFieldPasswerd(
                 lable: 'Passwerd',
+                Controller: paswwordController,
               ),
               const SizedBox(
                 height: 20,
               ),
-              InkWell(
-                child: Container(
-                  width: 300,
-                  height: 40,
-                  decoration: BoxDecoration(
-                      color: const Color(0xfffbcf7a),
-                      borderRadius: BorderRadius.circular(12)),
-                  child: const Center(
-                      child: Text(
-                    'Update',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                  )),
-                ),
+              EditButton(
+                text: 'Update',
+                onTap: () {
+                  if (nameController.text.isNotEmpty &&
+                      mobileController.text.isNotEmpty &&
+                      emailController.text.isNotEmpty &&
+                      paswwordController.text.isNotEmpty) {
+                    // currentUser.mobile = mobileController.text;
+                    // currentUser.name = nameController.text;
+                    // currentUser.email = emailController.text;
+                    // currentUser.password = paswwordController.text;
+                  }
+                },
               ),
             ],
           ),

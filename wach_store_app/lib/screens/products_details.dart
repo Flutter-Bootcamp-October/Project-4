@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wach_store_app/global/global.dart';
 import 'package:wach_store_app/models/wach_model.dart';
+import 'package:wach_store_app/screens/cart_screen.dart';
 import 'package:wach_store_app/widgets/appbar/app_bar.dart';
-import 'package:wach_store_app/widgets/profile_widget/row_circle_button_widget.dart';
+import 'package:wach_store_app/widgets/cart_widgets/row_circle_button_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final WachProduct wach;
@@ -11,7 +13,8 @@ class ProductDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: appbar(context, true, Icons.shopping_bag_outlined, wach.name),
+      appBar:
+          appbar(context, true, Icons.shopping_bag_outlined, wach.name, () {}),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -35,6 +38,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         wach.name,
                         style: const TextStyle(
                           color: Color(0xff163368),
+                          fontFamily: 'Crimson',
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
@@ -43,6 +47,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       Text(
                         '\$${wach.price}',
                         style: const TextStyle(
+                          fontFamily: 'Crimson',
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -57,6 +62,7 @@ class ProductDetailsScreen extends StatelessWidget {
               Text(
                 wach.description,
                 style: const TextStyle(
+                  fontFamily: 'Crimson',
                   fontSize: 16.0,
                 ),
               ),
@@ -67,7 +73,16 @@ class ProductDetailsScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            // if (!orderProducts.contains(wach)) {
+            //   orderProducts.add(wach);
+            //   wach.count = wach.count! + 1;
+            // } else {
+            //   wach.count = wach.count! + 1;
+            // }
+            // Navigator.push(
+            //     context, MaterialPageRoute(builder: (context) => CartScreen()));
+          },
           child: Container(
             width: double.infinity,
             height: 45,
@@ -86,6 +101,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   '  Add to Cart',
                   style: TextStyle(
                     color: Colors.black,
+                    fontFamily: 'Crimson',
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),

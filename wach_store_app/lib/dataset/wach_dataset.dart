@@ -11,7 +11,7 @@ certified mechanical movement which shows that watch quality is good
 Watch is Water resistance with high quality material and which enhance its beauty
 This watch is highly consist of body suitable Silicon with long and broad bands that make the user comfortable
 This watch is highly designed in a way which a user can carry on all the occasion with grace""",
-    'image': 'lib\\assets\\Black-watch-PNG.png'
+    'image': 'lib\\assets\\images\\watch-1.png'
   },
   {
     'name': 'Silicon Velocity Chronograph Watch',
@@ -21,7 +21,7 @@ Crafted with premium quality band material to prevent sweat and skin irritations
 Designed to exhibit a personalised appearance
 Perfect for both formal and unformal occasions
 Intricately decked that assures for wear-resistance''',
-    'image': 'lib\\assets\\blue.jpg'
+    'image': 'lib\\assets\\images\\watch-2.png'
   },
   {
     'name': 'GR&Master Grey Dial Watch',
@@ -39,7 +39,7 @@ This multi-function watch is suitable for wearing in various occasions, whether 
 The white dial is suitable for matching clothes of various colors, in line with the youthful vitality of young people, and makes
  the elderly look younger The crown of this leather men watch is embedded with a precision waterproof seal
 Thickened and high hardness watch mirror surface, better durability and better waterproof performance, long to use, reading time clearly''',
-    'image': 'lib\\assets\\brawn.jpg'
+    'image': 'lib\\assets\\images\\watch-3.png'
   },
   {
     'name': ' Navigator Leather Chronograph',
@@ -51,7 +51,7 @@ Leather strap construction for long-lasting use
 Made from glass and protects watch from scratches
 It’s a battery-powered watch that sends energy through a quartz crystal.
  Is typically built into three separate dials for the day of the week, date of the month and 24-hour time''',
-    'image': 'lib\\assets\\Fender-Jazzmaster.jpg'
+    'image': 'lib\\assets\\images\\watch-4.png'
   },
   {
     'name': 'Elite Men\'s Leather Wrist',
@@ -59,7 +59,7 @@ It’s a battery-powered watch that sends energy through a quartz crystal.
     'description': '''Stainless steel case
 Brown leather strap
 Mineral glass''',
-    'image': 'lib\\assets\\png-Brawn-watch.png'
+    'image': 'lib\\assets\\images\\watch-5.png'
   },
   {
     'name': 'Silicone Chronograph Wrist',
@@ -70,6 +70,6 @@ Designed with water-resistant features for ultimate safety of the watch
 Precisely attached with a leather band for comfortable wrist movement
 Decked with an adjustable closure that renders a secure and customized fit
 It comes with a protective coating and superb addition to your accessory shelf''',
-    'image': 'lib\\assets\\watches_PNG9866.png'
+    'image': 'lib\\assets\\images\\watch-6.png'
   },
 ];
