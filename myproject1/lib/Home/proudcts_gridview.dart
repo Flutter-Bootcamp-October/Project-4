@@ -10,9 +10,8 @@ class ProductsGridView extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: listProucts.length, // Assuming listProducts is a list of products
+        itemCount: listProucts.length,
         itemBuilder: (context, index) {
-          // Directly return a ProductWidget for the product at the current index
           return ProductWidget(
             product: listProucts[index],
           );

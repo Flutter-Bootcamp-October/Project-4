@@ -1,70 +1,58 @@
-# Project-4
+# Watch Store App
 
-## Congratulations!
+Welcome to the Watch Store App - a premier destination for exploring and purchasing luxury watches. Built with Flutter, this application adheres to the best practices for code organization and design patterns, offering a clean, scalable, and user-friendly shopping experience.
 
-Congratulations on reaching this phase of the course! Over the next few days, you will be working on the fourth project that will allow you to further apply your knowledge and skills to build another real-world application. This project will serve as a demonstration of your proficiency in Global Data Management, focusing on understanding Flutter's architecture, project structure, widgets, global data management, and data manipulation concepts.
+## Application Structure
 
-## Description
+The Watch Store App follows Flutter's recommended project structure, ensuring that all components are modular and reusable. We've organized the codebase into clear directories for models, views, widgets, and services to facilitate easy navigation and maintenance.
 
-Your task is to create a Flutter app that demonstrates global data management for a shopping app. The app should allow users to add, view, update, and remove items from their shopping cart. Global data management should be used to efficiently store and manage the shopping app items.
+## Clean Code
 
-## Rules & Guidelines
+Our commitment to clean code is evident throughout the application. We use meaningful naming conventions, follow Dart's style guide, and write scalable functions. This approach enhances readability and simplifies future development efforts.
 
-1. **Version Control (Git):**
-   - Create a Fork from the exam’s GitHub repository.
-   - Create a new branch with your name, i.e., Nawaf-Alshawan.
-   - Commit frequently with descriptive messages to show your progress.
-   - Finally, create a Pull Request to the exam’s original repository containing your solution.
-2. **Academic Integrity:** Do not copy or reuse code from previous modules or external sources. The exam is a showcase of your learning progress.
-3. **Learning References:** You may refer to course materials and code examples as learning references, but implement your solutions independently.
-4. **Instructor Support:** The instructor will be available for general questions and guidance throughout the exam.
+## Applying Concepts
 
-## Schedule & Deadlines
+The app demonstrates efficient algorithms and employs Flutter's design patterns to create a robust and responsive user interface. Performance and user experience are our top priorities, and we've optimized the app to reflect that.
 
-- **Project Start Date:** 2/11/2023 - 3:00 PM
-- **Project Submission Deadline:** 5/11/2023 – 9:59 PM
+## Global Variable Management
 
-## Minimum Requirements
+We utilize a global management system to handle the state of the watch items efficiently. A centralized global List variable ensures that the state is maintained and accessible throughout the app, leading to a seamless user experience.
 
-Your task is to create a Flutter app that demonstrates global data management for a shopping app. The app should allow users to add, view, update, and remove items from their shopping lists in the cart. Please note the following:
+## Data Representation
 
-- **Correct Structure:** Ensure that the application is built with the appropriate structure. Follow Flutter's best practices for organizing code and project files.
-- **Clean Code:** Write code that is clear, well-organized, and scalable. Use meaningful variable and function names and follow standard coding conventions to improve code readability.
-- **Applying Concepts:** Make proper use of programming concepts and techniques. Implement efficient algorithms and follow Flutter's design patterns to create a robust and functional shopping list app.
-- **Global Variable Management:** Implement global variable management techniques to efficiently store and manage the shopping list items. Create a global List variable that holds the shopping list items, and use this variable to maintain the state of the items throughout the app.
-- **Data Representation:** Treat shopping list items as objects using a model. Create a model class to define the structure of a shopping list item, including attributes like name, quantity, etc.
-- **User Interactions:** Users should be able to perform the following actions:
-  - Add: Add new items to their shopping list along with relevant details like name, quantity, etc.
-  - View: Display the list of items in the shopping list with their details.
-  - Update: Allow users to modify the details of any item in the shopping list.
-  - Remove: Enable users to delete items from the shopping list.
-- **User Authentication:** Implement a user registration and login system to allow multiple users to have their own personalized shopping lists.
-- **Utilizing Packages:** It is required that you use at least 3 packages from *pub.dev*.
+Each watch item is represented as an object using a well-defined model class. This class includes attributes such as name, brand, price, and quantity, allowing for detailed and structured data representation.
 
-## Ideas for Extra Credit
+## User Interactions
 
-1. **Categories and Sorting:** Add support for categorizing shopping list items. Users can assign items to different categories such as groceries, household items, or personal care. Implement sorting options based on categories, alphabetical order, or user-defined priorities!
-2. **Coupons and Deals:** Integrate with coupon and deal APIs to provide users with relevant discounts and offers for the items on their shopping list. Users can save money by taking advantage of available deals.
+The app allows for a variety of user interactions:
 
-## Delivery Requirements
+- **Add**: Users can add new watches to their shopping list with all necessary details.
+- **View**: A user-friendly display showcases the selected watches with their details.
+- **Update**: Users have the flexibility to modify the details of the watches in their shopping list.
+- **Remove**: Items can be easily removed from the shopping list if desired.
 
-- **Upload the Entire Project:** Ensure that you upload the complete project, which includes all necessary code files, assets, and configurations, to the repository on GitHub.
-- **Readme File:**
-  - Create a README.md file in the root directory of your GitHub repository.
-  - Provide a detailed and well-structured description of the project in the README file, including the following sections:
-    - **Project Overview:** Briefly describe what the shopping list app is about and its main features. Give readers a clear idea of the purpose and functionality of the app.
-    - **Screenshots:** Include relevant screenshots of the app to showcase its appearance and functionalities. Visuals can help users understand the app's design and layout.
-    - **Features:** List all the features and functionalities of the app. Mention the core capabilities of the app, such as adding items to the shopping list, updating items, deleting items, etc.
-    - **Technologies Used:** Mention the technologies and libraries utilized in the development of the app. This could include mentioning Flutter, specific plugins used, or any other relevant technologies.
+  ## Welocme Screen
+  ![welocmeimg](https://github.com/senshi900/Project-4/assets/129005111/5648fec8-2fbf-41a1-bca3-883e1c936568)
+
+  ## sginUp Screen
+  ![sgin up](https://github.com/senshi900/Project-4/assets/129005111/dd305349-f2ab-4853-a65c-e8ed6cb49b31)
+  # sgin in Screem
+![sgin in](https://github.com/senshi900/Project-4/assets/129005111/2af582ce-8ee7-4306-9f91-7325a0e12d70)
+# Home Screen
+![homescree](https://github.com/senshi900/Project-4/assets/129005111/354f118c-2b7f-44ee-97cf-3c889f1d7706)
+# detail Screen
+![detailscreen](https://github.com/senshi900/Project-4/assets/129005111/3710b988-b1b3-4388-b0a6-7ec65608a4d6)
+# order Screen
+![orderscreen](https://github.com/senshi900/Project-4/assets/129005111/25b068c3-76db-45fe-888c-847a2e1bcd9e)
+# checkout Screen 
+ ## in check out screen you can add copoun CODE10 to implement 10% discount !!
+![checkout screen](https://github.com/senshi900/Project-4/assets/129005111/13c6ed90-52e4-4313-883d-ca0104bdc488)
+# serch Screen 
+![serch screen](https://github.com/senshi900/Project-4/assets/129005111/7515d05f-b3b5-4a16-9b50-43ad55e8bf7f)
+# Filter Screen
+![filter](https://github.com/senshi900/Project-4/assets/129005111/a014fabd-c430-4ac8-8e34-a65de23ad600)
+# Profile Screen
+
+![profice](https://github.com/senshi900/Project-4/assets/129005111/b3bd26b6-e098-4608-89b5-cb8774fdda18)
 
 
-## Design Link
-<a href="https://www.figma.com/file/jmLvvSpadKxMjLmJ7XCyyE/Watch-Store-App-UI-Kit-(Community)?type=design&node-id=847%3A42244&mode=design&t=5hKrAUkhsX4uqB4P-1"> Figma Link</a>
-
-## Resources
-
-- [Dart Tutorials](https://dart.dev/tutorials)
-- [Flutter Documentation](https://docs.flutter.dev/)
-- [Flutter Tutorial by GeeksforGeeks](https://www.geeksforgeeks.org/flutter-tutorial/)
-
-Good luck with your exam project! If you have any general questions or need guidance, don't hesitate to reach out to the instructor. Happy coding!

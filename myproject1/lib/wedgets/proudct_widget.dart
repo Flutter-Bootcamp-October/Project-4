@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shopingpriject/data/global.dart';
+import 'package:shopingpriject/extenstions/navigator.dart';
 import 'package:shopingpriject/models/product_model.dart';
+import 'package:shopingpriject/screens/detail_screen.dart';
+import 'package:shopingpriject/screens/order_screen.dart';
 
 class ProductWidget extends StatelessWidget {
   const ProductWidget({
@@ -18,7 +22,17 @@ class ProductWidget extends StatelessWidget {
           child: Container(height: 350,width: 200,color: Color(0xfff9f7f8), ),
           
         ),
-        SizedBox(height: 250,width: 200,child: Image.asset(product.image),),
+        SizedBox(height: 250,width: 200,child: InkWell(
+          onTap: () {
+             Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetilScreen(
+                product: product,
+              ),
+            ));
+          },
+          child: Image.asset(product.image)),),
         Positioned(
           bottom: 50,
           child: Container(
@@ -40,9 +54,20 @@ class ProductWidget extends StatelessWidget {
         ),
           Padding(
             padding: const EdgeInsets.only(left: 70,top: 330),
-            child: Container(
-              
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(70),color: Color(0xfffec774)),width: 40,height: 40,child: Icon(Icons.add),),
+            child: InkWell(
+              onTap: () {
+      if (!orderProuct.contains(product)) {
+                        orderProuct.add(product);
+                        product.count = product.count! + 1;
+                      } else {
+                       product.count = product.count! + 1;
+                      }
+      context.pushScreen(OrderScreen());
+    },
+              child: Container(
+                
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(70),color: Color(0xfffec774)),width: 40,height: 40,child: Icon(Icons.add),),
+            ),
           )
       ],)
     ],);
