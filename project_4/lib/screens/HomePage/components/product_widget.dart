@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_4/bloc/cart_bloc/cart_bloc.dart';
 import 'package:project_4/models/watch_model.dart';
-import 'package:project_4/screens/ProductDetailsPage/components/method/add_item_to_list_method.dart';
 import 'package:project_4/screens/ProductDetailsPage/product_details_screen.dart';
 import 'package:project_4/screens/order/order_screen.dart';
 import 'package:project_4/widgets/circle_icon.dart';

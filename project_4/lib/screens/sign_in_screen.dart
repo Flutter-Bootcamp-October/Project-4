@@ -5,9 +5,6 @@ import 'package:project_4/screens/NavigationBar/navigation_bar_widget.dart';
 import 'package:project_4/screens/sign_up_screen.dart';
 import 'package:project_4/widgets/elevated_button.dart';
 
-import '../data/global_data.dart';
-import '../data/user_data_set.dart';
-import '../models/user_model.dart';
 import '../widgets/text_field.dart';
 
 class SignInScreen extends StatelessWidget {

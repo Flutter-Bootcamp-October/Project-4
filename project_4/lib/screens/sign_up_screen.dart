@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_4/bloc/auth_bloc/auth_bloc.dart';
-import 'package:project_4/models/user_model.dart';
 import 'package:project_4/screens/sign_in_screen.dart';
 import 'package:project_4/widgets/elevated_button.dart';
 import 'package:project_4/widgets/text_field.dart';
 
-import '../data/global_data.dart';
 import 'NavigationBar/navigation_bar_widget.dart';
 
 class SignUpScreen extends StatelessWidget {

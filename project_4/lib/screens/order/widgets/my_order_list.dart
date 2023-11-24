@@ -6,8 +6,6 @@ import 'package:project_4/data/global_data.dart';
 
 import 'package:project_4/screens/order/widgets/add_remove_item.dart';
 
-import '../order_screen.dart';
-
 class MyOrderList extends StatelessWidget {
   const MyOrderList({Key? key}) : super(key: key);
 

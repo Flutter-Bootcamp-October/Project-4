@@ -1,9 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_4/data/global_data.dart';
 import 'package:project_4/models/watch_model.dart';
-import 'package:project_4/screens/ProductDetailsPage/product_details_screen.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';

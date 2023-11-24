@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 
 import 'components/app_bar_widget.dart';
 import 'components/category_component.dart';
 import 'components/product_list_widget.dart';
 
 class HomePageScreen extends StatelessWidget {
-  const HomePageScreen({super.key});
+  const HomePageScreen({super.key, required this.advancedDrawerController});
+  final AdvancedDrawerController advancedDrawerController;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: homeAppBarWidget(context: context),
+      appBar:
+          homeAppBarWidget(context: context, advancedDrawerController: advancedDrawerController),
       body: const Padding(
         padding: EdgeInsets.all(18),
         child: Column(

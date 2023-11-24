@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:project_4/screens/filter/filter_screen.dart';
-
-import '../homepage_screen_drawer.dart';
 
 PreferredSizeWidget homeAppBarWidget({
   required BuildContext context,
+  required AdvancedDrawerController advancedDrawerController,
 }) {
   return AppBar(
       centerTitle: true,
@@ -23,8 +23,7 @@ PreferredSizeWidget homeAppBarWidget({
       actions: [
         InkWell(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const FilterScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const FilterScreen()));
           },
           child: const Icon(
             Icons.filter_list,

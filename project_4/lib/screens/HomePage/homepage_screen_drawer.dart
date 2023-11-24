@@ -10,6 +10,7 @@ class HomePageScreenDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final advancedDrawerController = AdvancedDrawerController();
     return AdvancedDrawer(
       controller: advancedDrawerController,
       openRatio: 0.35,
@@ -60,9 +61,9 @@ class HomePageScreenDrawer extends StatelessWidget {
           ),
         ),
       ),
-      child: const HomePageScreen(),
+      child: HomePageScreen(
+        advancedDrawerController: advancedDrawerController,
+      ),
     );
   }
 }
-
-final advancedDrawerController = AdvancedDrawerController();
