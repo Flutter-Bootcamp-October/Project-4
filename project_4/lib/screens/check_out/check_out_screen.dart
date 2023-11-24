@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_4/bloc/cart_bloc/cart_bloc.dart';
 import 'package:project_4/data/constants.dart';
 import 'package:project_4/data/global_data.dart';
 import 'package:project_4/widgets/payment_details.dart';
@@ -38,28 +40,24 @@ class CheckOutScreen extends StatelessWidget {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: CustomButton(
-          content: 'Place Order',
-          hasIcon: false,
-          onPressedFunc: () {
-            showDialog(
-                context: context,
-                builder: (context) {
-                  List boughtItemsName = [];
-                  double totalBoughtCost = grandTotal.value;
-                  num numberOfPurchasedItems = 0;
-                  for (var items in cartList) {
-                    boughtItemsName.add(items.name);
-                    numberOfPurchasedItems = items.count;
-                    items.count = 0;
-                  }
-                  return AlertDialog.adaptive(
-                    title: const Text("Congratulations"),
-                    content: Text(
-                        "You have bought ${numberOfPurchasedItems} item/s\nTotal cost = $rupeeIcon$totalBoughtCost\n\nWe will contact you soon"),
-                  );
-                }).then((value) => Navigator.pop(context));
-          }),
+      floatingActionButton: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) => CustomButton(
+            content: 'Place Order',
+            hasIcon: false,
+            onPressedFunc: () {
+              final total = grandTotal.value;
+              context.read<CartBloc>().add(CartClearEvent(watch: cartList.last));
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog.adaptive(
+                      title: const Text("Congratulations"),
+                      content: Text(
+                          "You have bought ${state.counter} item/s\nTotal cost = $rupeeIcon$total\n\nWe will contact you soon"),
+                    );
+                  }).then((value) => Navigator.pop(context));
+            }),
+      ),
     );
   }
 }

@@ -2,20 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:project_4/data/global_data.dart';
 import 'package:project_4/screens/check_out/widgets/payment_details_cost.dart';
 
-class PaymentDetails extends StatefulWidget {
+class PaymentDetails extends StatelessWidget {
   const PaymentDetails({Key? key}) : super(key: key);
-
-  @override
-  State<PaymentDetails> createState() => _PaymentDetailsState();
-}
-
-class _PaymentDetailsState extends State<PaymentDetails> {
-  @override
-  void initState() {
-    grandTotal.value = itemsTotal.value - discount;
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

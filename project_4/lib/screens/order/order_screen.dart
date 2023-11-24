@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_4/bloc/cart_bloc/cart_bloc.dart';
 
 import 'package:project_4/models/watch_model.dart';
 
@@ -11,16 +13,10 @@ import '../../widgets/custom_app_bar.dart';
 import 'widgets/my_order_list.dart';
 import '../../widgets/payment_details.dart';
 
-class OrderScreen extends StatefulWidget {
+class OrderScreen extends StatelessWidget {
   const OrderScreen({Key? key, this.watch, required this.isBottomNavBar}) : super(key: key);
   final Watch? watch;
 
-  @override
-  State<OrderScreen> createState() => OrderScreenState();
-  final bool isBottomNavBar;
-}
-
-class OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +25,7 @@ class OrderScreenState extends State<OrderScreen> {
           context: context,
           hasAction: true,
           onPressedFunc: () {
-            if (widget.isBottomNavBar) {
+            if (isBottomNavBar) {
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => const BottomNavBar()));
             } else {
@@ -38,7 +34,7 @@ class OrderScreenState extends State<OrderScreen> {
           }),
       body: WillPopScope(
         onWillPop: () {
-          if (widget.isBottomNavBar) {
+          if (isBottomNavBar) {
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => const BottomNavBar()));
           } else {
@@ -46,16 +42,20 @@ class OrderScreenState extends State<OrderScreen> {
           }
           return Future.value(true);
         },
-        child: Column(
-          children: [
-            Expanded(
-              flex: 3,
-              child: (cartList.isNotEmpty)
-                  ? const MyOrderList()
-                  : Image.asset("assets/images/cart-empty.png"),
-            ),
-            const Expanded(flex: 2, child: PaymentDetails()),
-          ],
+        child: BlocBuilder<CartBloc, CartState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: (cartList.isNotEmpty)
+                      ? const MyOrderList()
+                      : Image.asset("assets/images/cart-empty.png"),
+                ),
+                const Expanded(flex: 2, child: PaymentDetails()),
+              ],
+            );
+          },
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -64,13 +64,8 @@ class OrderScreenState extends State<OrderScreen> {
         hasIcon: false,
         onPressedFunc: () {
           if (cartList.isNotEmpty) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const CheckOutScreen()))
-                .then((value) {
-              cartList.clear();
-              itemsTotal.value = 0;
-              grandTotal.value = 0;
-              setState(() {});
-            });
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const CheckOutScreen()));
           } else {
             ScaffoldMessenger.of(context)
                 .showSnackBar(const SnackBar(content: Text("Your cart is empty")));
@@ -79,4 +74,6 @@ class OrderScreenState extends State<OrderScreen> {
       ),
     );
   }
+
+  final bool isBottomNavBar;
 }

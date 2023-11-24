@@ -7,23 +7,19 @@ import 'package:project_4/widgets/custom_button.dart';
 import 'widgets/profile_text_field.dart';
 import 'widgets/user_avatar.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  TextEditingController nameController = TextEditingController(text: currentUser.name);
-  TextEditingController phoneController = TextEditingController(text: currentUser.mobileNumber);
-  TextEditingController emailController = TextEditingController(text: currentUser.email);
-  TextEditingController passwordController = TextEditingController(text: currentUser.password);
-
-  @override
   Widget build(BuildContext context) {
+    TextEditingController nameController = TextEditingController(text: currentUser.name);
+
+    TextEditingController phoneController = TextEditingController(text: currentUser.mobileNumber);
+
+    TextEditingController emailController = TextEditingController(text: currentUser.email);
+
+    TextEditingController passwordController = TextEditingController(text: currentUser.password);
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
       appBar: customAppBar(
           title: "My Profile",
           context: context,
@@ -67,7 +63,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         content: "Update",
                         hasIcon: false,
                         onPressedFunc: () {
-                          checkUpdateInformation();
+                          checkUpdateInformation(
+                              nameController: nameController,
+                              phoneController: phoneController,
+                              emailController: emailController,
+                              passwordController: passwordController,
+                              context: context);
                         })
                   ],
                 ),
@@ -79,35 +80,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void checkUpdateInformation() {
+  void checkUpdateInformation(
+      {required nameController,
+      required phoneController,
+      required emailController,
+      required passwordController,
+      required BuildContext context}) {
     if (nameController.text.isEmpty ||
         emailController.text.isEmpty ||
         phoneController.text.isEmpty ||
         passwordController.text.isEmpty) {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Please don't leave the field empty")));
-    } else if (nameController.text != currentUser.name) {
+    }
+    if (nameController.text != currentUser.name) {
+      usersList.where((element) {
+        if (element.name == currentUser.name) {
+          element.name = nameController.text;
+        }
+        return true;
+      });
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
               "Name has been updated from [${currentUser.name}] to [${nameController.text}]")));
       currentUser.name = nameController.text;
-    } else if (emailController.text != currentUser.email) {
+    }
+    if (emailController.text != currentUser.email) {
+      usersList.where((element) {
+        if (element.email == currentUser.email) {
+          element.email = emailController.text;
+        }
+        return true;
+      });
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
               "Email has been updated from [${currentUser.email}] to [${emailController.text}]")));
       currentUser.email = emailController.text;
-    } else if (phoneController.text != currentUser.mobileNumber) {
+    }
+    if (phoneController.text != currentUser.mobileNumber) {
+      usersList.where((element) {
+        if (element.mobileNumber == currentUser.mobileNumber) {
+          element.mobileNumber = phoneController.text;
+        }
+        return true;
+      });
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
               "Phone Number has been updated from [${currentUser.mobileNumber}] to [${phoneController.text}]")));
       currentUser.mobileNumber = phoneController.text;
-    } else if (passwordController.text != currentUser.password) {
+    }
+    if (passwordController.text != currentUser.password) {
+      usersList.where((element) {
+        if (element.password == currentUser.password) {
+          element.password = passwordController.text;
+        }
+        return true;
+      });
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Password has been updated")));
       currentUser.password = passwordController.text;
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Your information is up-to-date")));
     }
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("Your information is up-to-date")));
   }
 }

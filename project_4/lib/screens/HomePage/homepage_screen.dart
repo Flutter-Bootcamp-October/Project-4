@@ -1,29 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:project_4/data/global_data.dart';
-import 'package:project_4/data/watch_data_set.dart';
-import 'package:project_4/models/watch_model.dart';
 
 import 'components/app_bar_widget.dart';
 import 'components/category_component.dart';
 import 'components/product_list_widget.dart';
 
-class HomePageScreen extends StatefulWidget {
+class HomePageScreen extends StatelessWidget {
   const HomePageScreen({super.key});
-
-  @override
-  State<HomePageScreen> createState() => _HomePageScreenState();
-}
-
-class _HomePageScreenState extends State<HomePageScreen> {
-  @override
-  void initState() {
-    if (watchesList.isEmpty) {
-      for (var element in watches) {
-        watchesList.add(Watch.fromJson(element));
-      }
-    }
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
