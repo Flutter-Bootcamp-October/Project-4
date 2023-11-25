@@ -1,50 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopingpriject/blocs/bloc/auth_bloc.dart';
+import 'package:shopingpriject/blocs/bloc/auth_event.dart';
+import 'package:shopingpriject/blocs/bloc/auth_state.dart';
 import 'package:shopingpriject/custom_profiletextfield.dart/custom_button.dart';
-import 'package:shopingpriject/data/global.dart';
-import 'package:shopingpriject/models/user_model.dart';
+
 import 'package:shopingpriject/screens/signin_screen.dart';
 import 'package:shopingpriject/widgets/custom_textfield.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  SignUpScreen({Key? key}) : super(key: key);
 
-  @override
-  _SignUpScreenState createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController nameController = TextEditingController();
+
   TextEditingController emailorusernameController = TextEditingController();
+
   TextEditingController paswwordController = TextEditingController();
-
-  bool isEmailUsed = false;
-
-  void signUp() {
-    String name = nameController.text;
-    String emailOrUsername = emailorusernameController.text;
-    String password = paswwordController.text;
-
-     if (name.isNotEmpty && emailOrUsername.isNotEmpty && password.isNotEmpty) {
-      bool emailExists = userList.any((user) => user.email == emailOrUsername);
-
-      if (!emailExists) {
-        User newUser = User(name: name, email: emailOrUsername, password: password);
-        userList.add(newUser);
-        Navigator.pushReplacement(context, MaterialPageRoute(
-          builder: (context) => const SignInScreen(),
-          
-        ));
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Email already exists")),
-        );
-      }
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please fill in all fields")),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +25,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     TextEditingController paswwordController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.only(
@@ -133,48 +103,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
-                  child: CustomButton(
-                    text: "Sign up",
-                    buttonColor: Colors.amber,
-                    onPressed: () {
-                      print("Name: ${nameController.text}");
-                      print(
-                          "Email/Username: ${emailorusernameController.text}");
-                      print("Password: ${paswwordController.text}");
-                      if (nameController.text.isNotEmpty &&
-                          emailorusernameController.text.isNotEmpty &&
-                          paswwordController.text.isNotEmpty) {
-                        for (var user in userList) {
-                          if (user.email == emailorusernameController.text) {
-                            isMatched = true;
-                          }
-                        }
-                        if (!isMatched) {
-                          User newUser = User(
-                              name: nameController.text,
-                              email: emailorusernameController.text,
-                              password: paswwordController.text);
-                          currentUser = newUser;
-
-                          userList.add(newUser);
-
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SignInScreen(),
-                              ));
-                        } else {
-                          isMatched = false;
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text("Email is used")));
-                        }
-                      } else {
+                  child: BlocListener<AuthBloc, AuthState>(
+                    listener: (context, state) {
+                      if (state is ErrorState) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content:
-                                    Text("Please insert all text fields")));
+                            SnackBar(content: Text(state.message)));
+                      } else if (state is SignUpSuccessedState) {
+                        print("Navigating to SignInScreen");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignInScreen(),
+                          ),
+                        );
                       }
                     },
+                    child: CustomButton(
+                      text: "Sign up",
+                      buttonColor: Colors.amber,
+                      onPressed: () {
+                        context.read<AuthBloc>().add(SignUpEvent(
+                            nameController.text,
+                            emailorusernameController.text,
+                            paswwordController.text));
+                      },
+                    ),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -189,7 +142,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SignInScreen(),
+                            builder: (context) => SignInScreen(),
                           ),
                         );
                       },

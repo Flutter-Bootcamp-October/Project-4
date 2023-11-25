@@ -1,40 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopingpriject/blocs/bloc/auth_bloc.dart';
+import 'package:shopingpriject/blocs/bloc/auth_event.dart';
+import 'package:shopingpriject/blocs/bloc/auth_state.dart';
 import 'package:shopingpriject/custom_profiletextfield.dart/custom_button.dart';
 import 'package:shopingpriject/data/global.dart';
-import 'package:shopingpriject/models/product_model.dart';
-import 'package:shopingpriject/models/user_items.dart';
-import 'package:shopingpriject/models/user_model.dart';
+
 import 'package:shopingpriject/screens/nav_bar.dart';
+import 'package:shopingpriject/screens/setting_Screen.dart';
 import 'package:shopingpriject/screens/signup_Screen.dart';
 import 'package:shopingpriject/widgets/custom_textfield.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+class SignInScreen extends StatelessWidget {
+  SignInScreen({Key? key}) : super(key: key);
 
-  @override
-  _SignInScreenState createState() => _SignInScreenState();
-}
-
-class _SignInScreenState extends State<SignInScreen> {
   TextEditingController emailorusernameController = TextEditingController();
+
   TextEditingController paswwordController = TextEditingController();
 
-
-
-  void signIn() {
+  /* void signIn() {
     String usernameOrEmail = emailorusernameController.text;
     String password = paswwordController.text;
 
     bool isSignInSuccessful = false;
- 
-  
 
     for (var user in userList) {
       if ((user.email == usernameOrEmail || user.name == usernameOrEmail) &&
           user.password == password) {
         currentUser = user;
         isSignInSuccessful = true;
-       
+
         break;
       }
     }
@@ -69,15 +64,22 @@ class _SignInScreenState extends State<SignInScreen> {
         const SnackBar(content: Text("Invalid credentials")),
       );
     }
-  }
-void addToBasket(Product product) {
-    currentUser.basket.add(product);
-  }
-
+  }*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      /* appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SettingsScreen()));
+            },
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.black,
+            )),
+      ),*/
+
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.only(
@@ -102,6 +104,17 @@ void addToBasket(Product product) {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SettingsScreen()));
+                    },
+                    icon: const Icon(
+                      Icons.settings,
+                      color: Colors.black,
+                    )),
                 Padding(
                   padding: const EdgeInsets.only(top: 40),
                   child: Image.asset(
@@ -154,10 +167,29 @@ void addToBasket(Product product) {
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
-                  child: CustomButton(
+                  child: BlocListener<AuthBloc, AuthState>(
+                    listener: (context, state) {
+                      if (state is SignInSuccessedState) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const NavBar(),
+                            ));
+                      } else if (state is ErrorState) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.message)));
+                      }
+                    },
+                    child: CustomButton(
                       text: "Sign in",
                       buttonColor: Colors.amber,
-                      onPressed: signIn),
+                      onPressed: () {
+                        context.read<AuthBloc>().add(SignInEvent(
+                            emailorusernameController.text,
+                            paswwordController.text));
+                      },
+                    ),
+                  ),
                 ),
                 SizedBox(height: 10),
                 Align(alignment: Alignment.bottomCenter, child: Text("OR")),
@@ -170,7 +202,7 @@ void addToBasket(Product product) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
+                          builder: (context) => SignUpScreen(),
                         ),
                       );
                     },
@@ -188,7 +220,7 @@ void addToBasket(Product product) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SignUpScreen(),
+                            builder: (context) => SignUpScreen(),
                           ),
                         );
                       },
@@ -210,4 +242,3 @@ void addToBasket(Product product) {
     );
   }
 }
-
