@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_4/bloc/filter_bloc/filter_bloc.dart';
 import 'package:project_4/screens/check_out/widgets/title_row.dart';
 import 'package:project_4/widgets/custom_app_bar.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
-import '../../data/constants.dart';
 import '../../widgets/custom_button.dart';
 import 'widgets/filter_chips.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
+
+import 'widgets/filter_range_slider.dart';
 
 class FilterScreen extends StatelessWidget {
   const FilterScreen({Key? key}) : super(key: key);
@@ -43,13 +45,27 @@ class FilterScreen extends StatelessWidget {
           const TitleRow(content: "Select Categories"),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: FilterChips(chipList: categories),
+            child: BlocBuilder<FilterBloc, FilterState>(
+              builder: (context, state) {
+                return FilterChips(
+                  state: state,
+                  chipList: categories,
+                );
+              },
+            ),
           ),
           const SizedBox(height: 10),
           const TitleRow(content: "Sort Watches By"),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: FilterChips(chipList: sortBy),
+          BlocBuilder<FilterBloc, FilterState>(
+            builder: (context, state) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: FilterChips(
+                  state: state,
+                  chipList: sortBy,
+                ),
+              );
+            },
           ),
           const SizedBox(height: 10),
           const TitleRow(content: "Select a Price Range"),
@@ -69,44 +85,6 @@ class FilterScreen extends StatelessWidget {
         hasIcon: false,
         onPressedFunc: () {},
       ),
-    );
-  }
-}
-
-class FilterRangeSlider extends StatefulWidget {
-  const FilterRangeSlider({
-    super.key,
-  });
-
-  @override
-  State<FilterRangeSlider> createState() => _FilterRangeSliderState();
-}
-
-class _FilterRangeSliderState extends State<FilterRangeSlider> {
-  var range = const SfRangeValues(350, 1100);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SfRangeSlider(
-          inactiveColor: const Color.fromARGB(255, 241, 241, 241),
-          min: 1,
-          max: 2000,
-          values: range,
-          onChanged: (value) {
-            range = SfRangeValues(value.start.round(), value.end.round());
-            setState(() {});
-          },
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text("$rupeeIcon${range.start}"),
-            Text("$rupeeIcon${range.end}"),
-          ],
-        )
-      ],
     );
   }
 }

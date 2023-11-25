@@ -13,8 +13,6 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    count = 1;
-
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
@@ -24,11 +22,11 @@ class ProductDetailsScreen extends StatelessWidget {
           builder: (context, state) {
             return CustomButton(
               onPressedFunc: () {
-                //addItemToCartFromDetails(watch, count);
-                context.read<CartBloc>().add(CartAddEvent(watch: watch, itemCount: count));
+                context.read<CartBloc>().add(CartAddEvent(watch: watch, itemCount: state.counter));
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(
-                        "$count items of (${watch.name}) has been added, total is: ${watch.count + count}")));
+                        "${state.counter} items of (${watch.name}) has been added, total is: ${watch.count + state.counter}")));
+                context.read<CartBloc>().add(CartResetCounter(watch: watch));
               },
               content: "Add to Cart",
               hasIcon: true,
@@ -42,4 +40,4 @@ class ProductDetailsScreen extends StatelessWidget {
   }
 }
 
-int count = 1;
+// int count = 1;

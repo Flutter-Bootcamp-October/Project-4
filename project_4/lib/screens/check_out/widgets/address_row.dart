@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:project_4/data/global_data.dart';
 
-class AddressRow extends StatefulWidget {
+class AddressRow extends StatelessWidget {
   const AddressRow({Key? key}) : super(key: key);
 
   @override
-  State<AddressRow> createState() => _AddressRowState();
-}
-
-String currentOption = currentUser.address![0]["name"];
-
-int selectedIndex = 0;
-
-class _AddressRowState extends State<AddressRow> {
-  @override
   Widget build(BuildContext context) {
+    String currentOption = currentUser.address![0]["name"];
+    int selectedIndex = 0;
     return Stack(
       children: [
         Container(
@@ -58,7 +51,6 @@ class _AddressRowState extends State<AddressRow> {
                         onChanged: (value) {
                           currentOption = value.toString();
                           selectedIndex = index;
-                          setState(() {});
                         },
                       ),
                       title: Text("${currentUser.address![index]["name"]}",

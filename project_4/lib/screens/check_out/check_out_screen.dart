@@ -55,7 +55,10 @@ class CheckOutScreen extends StatelessWidget {
                       content: Text(
                           "You have bought ${state.counter} item/s\nTotal cost = $rupeeIcon$total\n\nWe will contact you soon"),
                     );
-                  }).then((value) => Navigator.pop(context));
+                  }).then((value) {
+                context.read<CartBloc>().add(CartResetCounter(watch: watchesList.last));
+                Navigator.pop(context);
+              });
             }),
       ),
     );

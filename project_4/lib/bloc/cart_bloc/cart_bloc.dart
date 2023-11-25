@@ -6,7 +6,7 @@ part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartBloc() : super(CartInitialState(counter: 0)) {
+  CartBloc() : super(CartInitialState(counter: 1)) {
     on<CartIncreaseEvent>((event, emit) {
       event.watch.count = event.watch.count + 1;
       itemsTotal.value += event.watch.price;
@@ -20,19 +20,20 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         grandTotal.value = (itemsTotal.value - discount);
         event.watch.count = 0;
         cartList.remove(event.watch);
+        emit(CartRemoveState(counter: 1));
       } else {
         event.watch.count = event.watch.count - 1;
         itemsTotal.value -= event.watch.price;
         grandTotal.value = (itemsTotal.value - discount);
+        emit(CartDecreaseState(counter: event.watch.count));
       }
-      emit(CartDecreaseState(counter: event.watch.count));
     });
 
     on<CartAddEvent>((event, emit) {
       event.itemCount! > 1
           ? addItemToCartFromDetails(event.watch, event.itemCount!)
           : addItemToCart(event.watch);
-      emit(CartAddState(counter: event.watch.count));
+      emit(CartAddState(counter: event.itemCount!));
     });
 
     on<CartRemoveEvent>((event, emit) {
@@ -40,7 +41,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       grandTotal.value = itemsTotal.value - discount;
       event.watch.count = 0;
       cartList.remove(event.watch);
-      emit(CartRemoveState(counter: 0));
+      emit(CartRemoveState(counter: 1));
     });
 
     on<CartClearEvent>((event, emit) {
@@ -57,10 +58,19 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       emit(CartClearState(counter: numberOfPurchasedItems, total: totalBoughtCost));
     });
 
-    // on<CartChangeCountEvent>((event, emit) {
-    //   count++;
-    //   emit(CartChangeCountState(counter: count));
-    // });
+    on<CartIncreaseCountEvent>((event, emit) {
+      emit(CartChangeCountState(counter: state.counter + 1));
+    });
+
+    on<CartDecreaseCountEvent>((event, emit) {
+      if (state.counter == 1) {
+      } else {
+        emit(CartChangeCountState(counter: state.counter - 1));
+      }
+    });
+    on<CartResetCounter>((event, emit) {
+      emit(CartChangeCountState(counter: 1));
+    });
   }
 }
 
@@ -77,9 +87,10 @@ void addItemToCart(Watch watch) {
   }
 }
 
-void addItemToCartFromDetails(Watch watch, int count) {
+void addItemToCartFromDetails(Watch watch, num count) {
   if (!cartList.contains(watch)) {
     cartList.add(watch);
+
     watch.count = watch.count + count;
     itemsTotal.value += watch.price * count;
     grandTotal.value = itemsTotal.value;

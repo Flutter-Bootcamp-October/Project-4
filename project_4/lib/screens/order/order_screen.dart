@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_4/bloc/buttom_nav_bloc/bottom_nav_bloc.dart';
 import 'package:project_4/bloc/cart_bloc/cart_bloc.dart';
 
 import 'package:project_4/models/watch_model.dart';
@@ -26,8 +27,7 @@ class OrderScreen extends StatelessWidget {
           hasAction: true,
           onPressedFunc: () {
             if (isBottomNavBar) {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => const BottomNavBar()));
+              context.read<BottomNavBloc>().add(ChangeIndexEvent(index: 0));
             } else {
               Navigator.pop(context);
             }
@@ -35,6 +35,7 @@ class OrderScreen extends StatelessWidget {
       body: WillPopScope(
         onWillPop: () {
           if (isBottomNavBar) {
+            context.read<BottomNavBloc>().add(ChangeIndexEvent(index: 0));
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => const BottomNavBar()));
           } else {

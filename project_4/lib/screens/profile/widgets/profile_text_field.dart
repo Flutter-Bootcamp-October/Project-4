@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_4/bloc/text_field_bloc/text_field_bloc.dart';
 
-class ProfileTextField extends StatefulWidget {
+class ProfileTextField extends StatelessWidget {
   const ProfileTextField(
       {Key? key,
       required this.controller,
@@ -15,43 +17,42 @@ class ProfileTextField extends StatefulWidget {
   final TextInputType inputType;
 
   @override
-  State<ProfileTextField> createState() => _ProfileTextFieldState();
-}
-
-class _ProfileTextFieldState extends State<ProfileTextField> {
-  bool isObscure = true;
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: TextField(
-        obscureText: (widget.isPassword) ? isObscure : false,
-        controller: widget.controller,
-        decoration: InputDecoration(
-          label: Text(widget.label),
-          labelStyle: const TextStyle(color: Colors.grey),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(color: Colors.grey),
-          ),
-          suffixIcon: Visibility(
-            visible: widget.isPassword,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(35),
-              onTap: () {
-                isObscure = !isObscure;
-                setState(() {});
-              },
-              child: Icon(
-                isObscure ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                color: Colors.grey,
+      child: BlocBuilder<TextFieldBloc, TextFieldState>(
+        builder: (context, state) {
+          return TextField(
+            obscureText: (isPassword) ? state.isObscure : false,
+            controller: controller,
+            decoration: InputDecoration(
+              label: Text(label),
+              labelStyle: const TextStyle(color: Colors.grey),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: const BorderSide(color: Colors.grey),
+              ),
+              suffixIcon: Visibility(
+                visible: isPassword,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(35),
+                  onTap: () {
+                    context
+                        .read<TextFieldBloc>()
+                        .add(ChangeObscureEvent(isObscure: !state.isObscure));
+                  },
+                  child: Icon(
+                    state.isObscure ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                    color: Colors.grey,
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

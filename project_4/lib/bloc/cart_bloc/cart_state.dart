@@ -31,6 +31,7 @@ class CartClearState extends CartState {
   CartClearState({required super.counter, required this.total});
 }
 
-// class CartChangeCountState extends CartState {
-//   CartChangeCountState({required super.counter});
-// }
+class CartChangeCountState extends CartState {
+  // final int count;
+  CartChangeCountState({required super.counter});
+}

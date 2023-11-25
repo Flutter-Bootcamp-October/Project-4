@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_4/bloc/buttom_nav_bloc/bottom_nav_bloc.dart';
+import 'package:project_4/bloc/text_field_bloc/text_field_bloc.dart';
 import 'package:project_4/data/global_data.dart';
-import 'package:project_4/screens/NavigationBar/navigation_bar_widget.dart';
 import 'package:project_4/widgets/custom_app_bar.dart';
 import 'package:project_4/widgets/custom_button.dart';
 
@@ -25,56 +27,59 @@ class ProfileScreen extends StatelessWidget {
           context: context,
           hasAction: false,
           onPressedFunc: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => const BottomNavBar()));
+            context.read<BottomNavBloc>().add(ChangeIndexEvent(index: 0));
           }),
       body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * .65,
-          child: Column(
-            children: [
-              const SizedBox(height: 8),
-              const Expanded(child: UserAvatar()),
-              Expanded(
-                flex: 5,
-                child: Column(
-                  children: [
-                    ProfileTextField(
-                        controller: nameController,
-                        label: "Name",
-                        isPassword: false,
-                        inputType: TextInputType.text),
-                    ProfileTextField(
-                        controller: phoneController,
-                        label: "Mobile Number",
-                        isPassword: false,
-                        inputType: TextInputType.number),
-                    ProfileTextField(
-                        controller: emailController,
-                        label: "Email Address",
-                        isPassword: false,
-                        inputType: TextInputType.text),
-                    ProfileTextField(
-                        controller: passwordController,
-                        label: "Password",
-                        isPassword: true,
-                        inputType: TextInputType.text),
-                    CustomButton(
-                        content: "Update",
-                        hasIcon: false,
-                        onPressedFunc: () {
-                          checkUpdateInformation(
-                              nameController: nameController,
-                              phoneController: phoneController,
-                              emailController: emailController,
-                              passwordController: passwordController,
-                              context: context);
-                        })
-                  ],
-                ),
-              )
-            ],
-          ),
+        child: BlocBuilder<TextFieldBloc, TextFieldState>(
+          builder: (context, state) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height * .65,
+              child: Column(
+                children: [
+                  const SizedBox(height: 8),
+                  const Expanded(child: UserAvatar()),
+                  Expanded(
+                    flex: 5,
+                    child: Column(
+                      children: [
+                        ProfileTextField(
+                            controller: nameController,
+                            label: "Name",
+                            isPassword: false,
+                            inputType: TextInputType.text),
+                        ProfileTextField(
+                            controller: phoneController,
+                            label: "Mobile Number",
+                            isPassword: false,
+                            inputType: TextInputType.number),
+                        ProfileTextField(
+                            controller: emailController,
+                            label: "Email Address",
+                            isPassword: false,
+                            inputType: TextInputType.text),
+                        ProfileTextField(
+                            controller: passwordController,
+                            label: "Password",
+                            isPassword: true,
+                            inputType: TextInputType.text),
+                        CustomButton(
+                            content: "Update",
+                            hasIcon: false,
+                            onPressedFunc: () {
+                              checkUpdateInformation(
+                                  nameController: nameController,
+                                  phoneController: phoneController,
+                                  emailController: emailController,
+                                  passwordController: passwordController,
+                                  context: context);
+                            })
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

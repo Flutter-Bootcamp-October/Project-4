@@ -15,7 +15,7 @@ class CartDecreaseEvent extends CartEvent {
 }
 
 class CartAddEvent extends CartEvent {
-  final int? itemCount;
+  final num? itemCount;
   CartAddEvent({this.itemCount = 1, required super.watch});
 }
 
@@ -27,6 +27,14 @@ class CartClearEvent extends CartEvent {
   CartClearEvent({required super.watch});
 }
 
-// class CartChangeCountEvent extends CartEvent {
-//   CartChangeCountEvent({required super.watch});
-// }
+class CartIncreaseCountEvent extends CartEvent {
+  CartIncreaseCountEvent({required super.watch});
+}
+
+class CartDecreaseCountEvent extends CartEvent {
+  CartDecreaseCountEvent({required super.watch});
+}
+
+class CartResetCounter extends CartEvent {
+  CartResetCounter({required super.watch});
+}

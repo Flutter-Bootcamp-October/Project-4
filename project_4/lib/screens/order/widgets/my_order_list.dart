@@ -32,10 +32,6 @@ class MyOrderList extends StatelessWidget {
                 key: UniqueKey(),
                 direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
-                  // itemsTotal.value -= (cartList[index].price * cartList[index].count);
-                  // grandTotal.value = itemsTotal.value - discount;
-                  // cartList[index].count = 0;
-                  // cartList.remove(cartList[index]);
                   context.read<CartBloc>().add(CartRemoveEvent(watch: cartList[index]));
                 },
                 child: Padding(

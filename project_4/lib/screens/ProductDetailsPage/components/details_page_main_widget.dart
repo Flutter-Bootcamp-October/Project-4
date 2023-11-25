@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_4/data/global_data.dart';
 import 'package:project_4/models/watch_model.dart';
 import 'package:project_4/widgets/circle_icon.dart';
-import '../product_details_screen.dart';
+import '../../../bloc/cart_bloc/cart_bloc.dart';
 import 'product_background_widget.dart';
 
-class DetailsPageMainWidget extends StatefulWidget {
+class DetailsPageMainWidget extends StatelessWidget {
   const DetailsPageMainWidget({
     super.key,
     required this.watch,
   });
+
   final Watch watch;
 
   @override
-  State<DetailsPageMainWidget> createState() => _DetailsPageMainWidgetState();
-}
-
-class _DetailsPageMainWidgetState extends State<DetailsPageMainWidget> {
-  @override
   Widget build(BuildContext context) {
+    // int counter = 1;
     return Column(
       children: [
         ProductBackgroundWidget(
-          watch: widget.watch,
+          watch: watch,
         ),
         Padding(
           padding: const EdgeInsets.all(25),
@@ -37,46 +36,49 @@ class _DetailsPageMainWidgetState extends State<DetailsPageMainWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.watch.name,
+                            watch.name,
                             style: const TextStyle(
                                 fontSize: 24, color: Color(0xff294475), fontFamily: 'DMSerifText'),
                           ),
                           Text(
-                            "₹${widget.watch.price}",
+                            "₹${watch.price}",
                             style: const TextStyle(fontSize: 24, fontFamily: 'DMSerifText'),
                           ),
                         ],
                       ),
                       const Spacer(),
-                      Row(
-                        children: [
-                          CircleIcon(
-                              iconData: Icons.remove,
-                              onPressedFunc: () {
-                                if (count == 1) {
-                                } else {
-                                  count--;
-                                }
-                                setState(() {});
-                              }),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            //quantity
-                            "$count",
-                            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          CircleIcon(
-                              iconData: Icons.add,
-                              onPressedFunc: () {
-                                count++;
-                                setState(() {});
-                              }),
-                        ],
+                      BlocBuilder<CartBloc, CartState>(
+                        builder: (context, state) {
+                          return Row(
+                            children: [
+                              CircleIcon(
+                                  iconData: Icons.remove,
+                                  onPressedFunc: () {
+                                    context
+                                        .read<CartBloc>()
+                                        .add(CartDecreaseCountEvent(watch: watchesList.last));
+                                  }),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                //quantity
+                                "${state.counter}",
+                                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              CircleIcon(
+                                  iconData: Icons.add,
+                                  onPressedFunc: () {
+                                    context
+                                        .read<CartBloc>()
+                                        .add(CartIncreaseCountEvent(watch: watchesList.last));
+                                  }),
+                            ],
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -84,7 +86,7 @@ class _DetailsPageMainWidgetState extends State<DetailsPageMainWidget> {
                     height: 10,
                   ),
                   Text(
-                    widget.watch.description,
+                    watch.description,
                     overflow: TextOverflow.clip,
                     style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
